@@ -293,3 +293,69 @@ body {
     transform: none !important;
   }
 }
+/* ===== 主题切换按钮：固定右上角 ===== */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--hit-card);
+  border: 1px solid var(--hit-blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.12);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  /* 避免被其他元素遮挡 */
+}
+.theme-toggle:hover {
+  transform: scale(1.08);
+  background: var(--hit-blue-light);
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--hit-gray);
+}
+
+/* ===== 手机端导航栏：横向滚动 + 居中 ===== */
+.main-nav .container {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  padding: 0.75rem 0;
+  flex-wrap: nowrap; /* 禁止换行 */
+  overflow-x: auto; /* 横向滚动 */
+  -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
+  scrollbar-width: none; /* Firefox 隐藏滚动条 */
+}
+.main-nav .container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari 隐藏滚动条 */
+}
+
+/* 为手机端添加轻微内边距，避免贴边 */
+@media (max-width: 640px) {
+  .main-nav .container {
+    padding: 0.75rem 1rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== 页脚版权文字优化 ===== */
+.footer p:nth-of-type(3) { /* 第三个 <p>：© 2026... */
+  font-size: 0.875rem;
+  opacity: 0.7;
+  text-align: center;
+  margin: 0.75rem 0 0;
+}
+
+
