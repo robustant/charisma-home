@@ -7,14 +7,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 复用主页 header -->
+  <!-- 全局导航 -->
+  <nav class="main-nav">
+    <div class="container">
+      <a href="index.html">主页</a>
+      <a href="self-introduction.html" class="active">自我介绍</a>
+      <a href="notes/">笔记</a>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
   <header class="hero">
     <div class="container">
       <h1>自我介绍</h1>
       <p>哈工大 · 公共管理学 · 硕士研究生</p>
     </div>
   </header>
-
 
   <div class="container">
     <section class="card">
@@ -24,11 +32,10 @@
       </ul>
     </section>
 
-
     <section class="card">
-      <h2>🛠️ 论文发表</h2>
+      <h2>📄 论文发表</h2>
       <ul>
-        <li>...</li>
+        <li>待补充（研究进行中）</li>
       </ul>
     </section>
     
@@ -52,13 +59,26 @@
     </section>
 
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="index.html" class="btn">返回主页</a>
+      <a href="index.html" class="btn btn-primary">← 返回主页</a>
     </div>
   </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Charisma | HIT</p>
+  <footer class="footer">
+    <div class="hit-links">
+      <h3>📚 哈工大友链</h3>
+      <div class="links-grid">
+        <a href="https://www.hit.edu.cn/" target="_blank">学校官网</a>
+        <a href="https://som.hit.edu.cn/" target="_blank">经管学院</a>
+        <a href="https://lib.hit.edu.cn/" target="_blank">图书馆</a>
+        <a href="https://ivpn.hit.edu.cn/" target="_blank">校外登录</a>
+        <a href="http://i.hit.edu.cn/index#/app/home/index" target="_blank">校内登录</a>
+      </div>
+    </div>
+    <p class="hitu-slogan">规格严格，功夫到家</p>
+    <p>© 2026 Charisma | HIT</p>
+    <div class="social-links">
+      <a href="https://github.com/robustant" target="_blank">🐙</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn">✉️</a>
     </div>
   </footer>
 
