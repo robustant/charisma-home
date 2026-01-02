@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git 实用技巧速查 | Charisma</title>
+  <title>笔记标题 | Charisma</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -41,58 +41,51 @@
     </div>
   </nav>
 
-  <!-- 英雄区 -->
+  <!-- 笔记标题、记录时间、类别标签 -->
   <header class="hero">
     <div class="container">
-      <h1 class="fade-in">Git 实用技巧速查</h1>
-      <p class="subtitle fade-in-delay">2026-01-02 | 工具类 · 高频操作备忘</p>
+      <h1 class="fade-in">主标题></h1>
+      <p class="subtitle fade-in-delay">副标题></p>
+      <div class="note-meta fade-in-delay" style="margin-top: 1rem;">
+        <span>📅 2026-01-05</span>
+        <span>🏷️ 统计学 · 机器学习 · 公共政策</span>
+      </div>
     </div>
   </header>
 
   <div class="container">
     <section class="card fade-in">
-      <div class="note-meta" style="margin-bottom: 1.5rem;">
-        <span>📅 2026-01-02</span>
-        <span>🏷️ git, 工具</span>
-      </div>
-
-      <h2>1. 撤销最近一次提交（保留工作区修改）</h2>
-      <pre><code>git reset --soft HEAD~1</code></pre>
-
-      <h2>2. 强制推送（慎用！）</h2>
-      <pre><code>git push --force-with-lease</code></pre>
-
-      <h2>3. 查看某次提交的变更文件</h2>
-      <pre><code>git diff --name-only HEAD~1</code></pre>
-
-      <h2>4. 忽略已跟踪文件的修改</h2>
-      <pre><code>git update-index --assume-unchanged &lt;file&gt;</code></pre>
-
-      <blockquote>
-        <p>“Git 是时间机器，不是备份工具。” —— 习惯用 <code>git log --oneline</code> 回溯历史。</p>
-      </blockquote>
+      
+      <h2>段落一</h2>
+      <p>...</p>
+      
     </section>
 
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="../notes/" class="btn btn-primary">← 返回笔记列表</a>
-    </div>
+    <section class="card fade-in">
+      
+      <h2>段落二</h2>
+      <p>...</p>
+    </section>
+
   </div>
 
   <footer class="footer">
+    
     <div class="hit-links">
-      <h3>🔍 笔记分类</h3>
+      <h3>延伸资源</h3>
       <div class="links-grid">
-        <a href="#" aria-label="统计学笔记">统计学</a>
-        <a href="#" aria-label="前端技术">前端</a>
-        <a href="#" aria-label="公共管理">公共管理</a>
-        <a href="#" aria-label="工具链">工具链</a>
-        <a href="#" aria-label="读书笔记">读书</a>
+        <a href="https://github.com/microsoft/EconML" target="_blank" rel="noopener">EconML (Microsoft)</a>
+        <a href="https://www.causalinf.com/" target="_blank" rel="noopener">Causal Inference Book</a>
+        <a href="https://arxiv.org/abs/1806.02691" target="_blank" rel="noopener">Causal Forest 论文</a>
       </div>
     </div>
+    
     <p class="hitu-slogan">规格严格，功夫到家</p>
+    
     <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    
     <div class="social-links">
-      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
+      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub" rel="noopener">🐙</a>
       <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="发送邮件">✉️</a>
     </div>
   </footer>
