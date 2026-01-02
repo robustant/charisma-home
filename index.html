@@ -2,26 +2,28 @@
 <html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charisma | 自我介绍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charisma | 主页</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 全局导航 -->
+  <!-- 全局导航（与 self-introduction.html 保持一致） -->
   <nav class="main-nav">
-    <ul class="main-nav-links">
-      <li><a href="index.html">主页</a></li>
-      <li><a href="self-introduction.html" class="active">自我介绍</a></li>
-      <li><a href="notes/">笔记</a></li>
-    </ul>
+    <div class="container">
+      <ul class="main-nav-links">
+        <li><a href="index.html" class="active">主页</a></li>
+        <li><a href="self-introduction.html">自我介绍</a></li>
+        <li><a href="notes/">笔记</a></li>
+      </ul>
+    </div>
     <button class="hamburger" aria-label="切换导航菜单">
       <span></span>
       <span></span>
       <span></span>
     </button>
     <div class="mobile-menu">
-      <a href="index.html">主页</a>
-      <a href="self-introduction.html" class="active">自我介绍</a>
+      <a href="index.html" class="active">主页</a>
+      <a href="self-introduction.html">自我介绍</a>
       <a href="notes/">笔记</a>
     </div>
   </nav>
@@ -29,70 +31,73 @@
   <!-- 英雄区 -->
   <header class="hero">
     <div class="container">
-      <h1>自我介绍</h1>
-      <p>哈工大 · 公共管理学 · 硕士研究生</p>
+      <h1 class="fade-in">你好，我是 <span class="highlight">Charisma</span></h1>
+      <p class="subtitle fade-in-delay">Charisma | HIT | Master</p>
+      <div class="cta-buttons fade-in-delay-2">
+        <a href="self-introduction.html" class="btn btn-primary">自我介绍</a>
+        <a href="notes/" class="btn btn-primary">笔记列表</a>
+      </div>
     </div>
   </header>
 
-  <div class="container">
-    <section class="card fade-in">
-      <h2>🎓 教育背景</h2>
-      <ul>
-        <li>
-          <strong>2022–2026</strong>：XX大学，软件工程，本科<br>
-          GPA：3.7/4.0 | 核心课程：数据结构、操作系统、Web 开发<br>
-          <em>（现于哈尔滨工业大学攻读公共管理硕士）</em>
-        </li>
-      </ul>
-    </section>
-
-    <section class="card fade-in">
-      <h2>📄 论文发表</h2>
-      <ul>
-        <li>待补充（研究进行中）</li>
-      </ul>
-    </section>
-
-    <section class="card fade-in">
-      <h2>🛠️ 技术实践</h2>
-      <ul>
-        <li>独立开发个人主页（GitHub Pages + 原生 HTML/CSS/JS）</li>
-        <li>参与开源项目：修复文档 typo / 提交 PR（如 XXX）</li>
-        <li>熟悉 Git 工作流、CI/CD 基础</li>
-      </ul>
-    </section>
-
-    <section class="card fade-in">
-      <h2>🎯 未来计划</h2>
-      <p>希望在研究生阶段：</p>
-      <ul>
-        <li>深入理解 Web 核心原理（浏览器、网络、安全）</li>
-        <li>产出可复现的技术笔记与小工具</li>
-        <li>与社区共同成长 —— 感谢萌萌姐一路陪伴 <span class="heart">❤️</span></li>
-      </ul>
-    </section>
-
-    <div class="center-button">
-      <a href="index.html" class="btn btn-primary">← 返回主页</a>
+  <!-- 关于我 -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">简介</h2>
+      <div class="about-grid">
+        <div class="card fade-in">
+          <h3>学术与技能</h3>
+          <ul>
+            <li>公共管理学（研一）</li>
+            <li>HTML / CSS / JavaScript（技术实践）</li>
+            <li>Python 数据分析基础（Pandas/Matplotlib）</li>
+            <li>Git / GitHub / 文档写作</li>
+          </ul>
+        </div>
+        <div class="card fade-in-delay">
+          <h3>兴趣与思考</h3>
+          <ul>
+            <li>数字公共治理</li>
+            <li>开源协作与知识共享</li>
+            <li>编程 · 阅读 · 旅游</li>
+            <li>持续学习，知行合一</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
+  <!-- 项目 -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="section-title fade-in">近期实践</h2>
+      <div class="projects">
+        <div class="project-card fade-in-delay">
+          <h3>研究笔记系统</h3>
+          <p>正在构建 Markdown 知识库原型，用于课程总结与科研沉淀。</p>
+          <a href="notes/2026-01-02-git-tips.html" class="project-link">查看笔记 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
   <footer class="footer">
     <div class="hit-links">
       <h3>📚 哈工大友链</h3>
       <div class="links-grid">
-        <a href="https://www.hit.edu.cn/" target="_blank">学校官网</a>
-        <a href="https://som.hit.edu.cn/" target="_blank">经管学院</a>
-        <a href="https://lib.hit.edu.cn/" target="_blank">图书馆</a>
-        <a href="https://ivpn.hit.edu.cn/" target="_blank">校外登录</a>
-        <a href="http://i.hit.edu.cn/index#/app/home/index" target="_blank">校内登录</a>
+        <a href="https://www.hit.edu.cn/" target="_blank" aria-label="哈尔滨工业大学官网">学校官网</a>
+        <a href="https://som.hit.edu.cn/" target="_blank" aria-label="经管学院">经管学院</a>
+        <a href="https://lib.hit.edu.cn/" target="_blank" aria-label="图书馆">图书馆</a>
+        <a href="https://ivpn.hit.edu.cn/" target="_blank" aria-label="校外登录">校外登录</a>
+        <a href="http://i.hit.edu.cn/index#/app/home/index" target="_blank" aria-label="校内门户">校内门户</a>
       </div>
     </div>
     <p class="hitu-slogan">规格严格，功夫到家</p>
-    <p>© 2026 Charisma | HIT</p>
+    <p>© 2026 Charisma | 哈尔滨工业大学</p>
     <div class="social-links">
       <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
-      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="发送邮件">✉️</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="邮箱">✉️</a>
     </div>
   </footer>
 
