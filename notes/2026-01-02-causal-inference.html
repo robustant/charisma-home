@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>因果推断入门 | Charisma</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- 全局导航 -->
+  <nav class="main-nav">
+    <div class="container">
+      <a href="../index.html">主页</a>
+      <a href="../self-introduction.html">自我介绍</a>
+      <a href="../notes/" class="active">笔记</a>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
+  <header class="hero">
+    <div class="container">
+      <h1>因果推断入门</h1>
+      <p>从相关性到因果性：识别混杂偏倚与估计处理效应</p>
+      <div class="note-meta">
+        <span>📅 2026-01-05</span>
+        <span>🏷️ 统计学 · 机器学习 · 公共政策</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="card">
+      <h2>为什么需要因果推断？</h2>
+      <p>在公共管理与社会科学研究中，我们常问：</p>
+      <blockquote>
+        “提高医保报销比例 → 是否真的降低了居民自付医疗支出？”<br>
+        “社区养老服务中心建设 → 是否显著提升了老年人幸福感？”
+      </blockquote>
+      <p>⚠️ 相关性 ≠ 因果性。观察数据中普遍存在 <strong>混杂偏倚（Confounding Bias）</strong>。</p>
+    </section>
+
+    <section class="card">
+      <h2>核心概念速查</h2>
+      <ul>
+        <li><strong>潜在结果框架（Potential Outcomes）</strong>：<br>
+          对个体 \(i\)，定义：
+          <ul>
+            <li>\(Y_i(1)\)：接受处理（如参加培训）后的结果</li>
+            <li>\(Y_i(0)\)：未接受处理时的结果</li>
+            <li>个体处理效应：\(\tau_i = Y_i(1) - Y_i(0)\)（不可观测）</li>
+          </ul>
+        </li>
+        <li><strong>平均处理效应（ATE）</strong>：<br>
+          \(\text{ATE} = \mathbb{E}[Y(1) - Y(0)]\) —— 群体层面的因果效应</li>
+        <li><strong>条件可忽略性（Unconfoundedness）</strong>：<br>
+          \(Y(1), Y(0) \perp T \mid X\)，即给定协变量 \(X\) 后，处理分配 \(T\) 与潜在结果独立。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>常用方法对比</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>方法</th>
+            <th>原理</th>
+            <th>适用场景</th>
+            <th>局限</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>匹配（Matching）</strong></td>
+            <td>为处理组个体寻找相似的对照组（如 PSM）</td>
+            <td>小样本、高维协变量</td>
+            <td>依赖距离度量；无法处理未重叠区域</td>
+          </tr>
+          <tr>
+            <td><strong>双重差分（DID）</strong></td>
+            <td>比较处理组与对照组在政策前后的变化差</td>
+            <td>面板数据、准实验设计</td>
+            <td>需满足平行趋势假设</td>
+          </tr>
+          <tr>
+            <td><strong>工具变量（IV）</strong></td>
+            <td>用外生工具 \(Z\) 识别内生性问题</td>
+            <td>存在强工具变量时</td>
+            <td>弱工具变量导致偏差放大</td>
+          </tr>
+          <tr>
+            <td><strong>因果森林（Causal Forest）</strong></td>
+            <td>基于随机森林估计异质性处理效应</td>
+            <td>大数据、需个性化效应</td>
+            <td>黑盒性；解释性较弱</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>一个简单例子：教育对收入的影响</h2>
+      <p>问题：多读一年书，平均多赚多少钱？</p>
+      <pre><code># 假设数据结构
+id | education | income | ability | region
+---|-----------|--------|---------|-------
+1  | 16        | 85000  | 0.8     | 北京
+2  | 12        | 52000  | 0.4     | 河南
+...</code></pre>
+      <p>❌ 忽略能力（ability）→ 高估教育回报（能力强者更可能升学且收入高）<br>
+      ✅ 用 PSM 匹配：按 ability + region 匹配处理组（16年教育）与对照组（12年教育）</p>
+    </section>
+
+    <section class="card">
+      <h2>延伸阅读</h2>
+      <ul>
+        <li>📖 <a href="https://www.cambridge.org/core/books/crime-and-punishment/..." target="_blank">Imbens & Rubin (2015) <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em></a></li>
+        <li>💻 Python 库：<code>causalinference</code>, <code>EconML</code>, <code>DoWhy</code></li>
+        <li>🎓 哈工大课程参考：<a href="https://course.hit.edu.cn/" target="_blank">《计量经济学》《社会科学研究方法》</a></li>
+      </ul>
+    </section>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="../notes/" class="btn btn-primary">← 返回笔记列表</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="hit-links">
+      <h3>📚 延伸资源</h3>
+      <div class="links-grid">
+        <a href="https://github.com/microsoft/EconML" target="_blank">EconML (Microsoft)</a>
+        <a href="https://www causalinf.com/" target="_blank">Causal Inference Book</a>
+        <a href="https://arxiv.org/abs/1806.02691" target="_blank">Causal Forest 论文</a>
+      </div>
+    </div>
+    <p class="hitu-slogan">规格严格，功夫到家</p>
+    <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    <div class="social-links">
+      <a href="https://github.com/robustant" target="_blank">🐙</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn">✉️</a>
+    </div>
+  </footer>
+
+  <script src="../dynamic.js"></script>
+</body>
+</html>
