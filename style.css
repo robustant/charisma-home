@@ -1,6 +1,5 @@
-/* ===== HIT Design System v2.0 —— 统一主站样式 ===== */
+/* ===== HIT Design System v2.1 —— 含导航栏主题按钮 ===== */
 :root {
-  /* 色彩系统 - 浅色模式 */
   --hit-blue: #003366;
   --hit-blue-light: #e6f0fa;
   --hit-gray: #4a5568;
@@ -8,17 +7,12 @@
   --hit-white: #ffffff;
   --hit-bg: #f8fafc;
   --hit-card: #ffffff;
-
-  /* 字体 */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
   --font-serif: "Songti SC", "SimSun", serif;
-
-  /* 动画 */
   --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 [data-theme="dark"] {
-  /* 深色模式覆盖 */
   --hit-bg: #0f172a;
   --hit-card: #1e293b;
   --hit-blue: #38bdf8;
@@ -48,7 +42,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* ===== 全局导航 ===== */
+/* ===== 导航栏 ===== */
 .main-nav {
   background: var(--hit-card);
   border-bottom: 1px solid var(--hit-blue-light);
@@ -61,9 +55,11 @@ body {
   padding: 0.6rem 1.5rem;
 }
 
-.main-nav .container {
+.nav-left,
+.nav-right {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .main-nav-links {
@@ -72,8 +68,7 @@ body {
   list-style: none;
 }
 
-.main-nav a,
-.main-nav .container > a {
+.main-nav a {
   color: var(--hit-gray);
   text-decoration: none;
   font-weight: 500;
@@ -82,9 +77,7 @@ body {
   transition: var(--transition);
 }
 
-/* 支持两种结构：ul 内 a 或直接 a */
-.main-nav a::after,
-.main-nav .container > a::after {
+.main-nav a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -96,19 +89,48 @@ body {
 }
 
 .main-nav a:hover,
-.main-nav a.active,
-.main-nav .container > a:hover,
-.main-nav .container > a.active {
+.main-nav a.active {
   color: var(--hit-blue);
 }
 
 .main-nav a:hover::after,
-.main-nav a.active::after,
-.main-nav .container > a:hover::after,
-.main-nav .container > a.active::after {
+.main-nav a.active::after {
   width: 100%;
 }
 
+/* 主题切换按钮 */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--hit-blue-light);
+  border-radius: 50%;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--hit-gray);
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="light"] .sun-icon { opacity: 1; }
+[data-theme="light"] .moon-icon { opacity: 0; }
+[data-theme="dark"] .sun-icon { opacity: 0; }
+[data-theme="dark"] .moon-icon { opacity: 1; }
+
+/* 汉堡菜单（默认隐藏） */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -162,7 +184,7 @@ body {
   display: block;
 }
 
-/* ===== 英雄区（Hero）===== */
+/* ===== 英雄区 ===== */
 .hero {
   text-align: center;
   padding: 4rem 0 3rem;
@@ -178,7 +200,7 @@ body {
 }
 
 .highlight {
-  color: #60a5fa; /* 浅蓝高亮，深色模式也清晰 */
+  color: #60a5fa;
 }
 
 .subtitle {
@@ -206,7 +228,7 @@ body {
   font-size: 1.75rem;
 }
 
-/* ===== 卡片系统（用于自我介绍 & 主页）===== */
+/* ===== 卡片系统 ===== */
 .card {
   background: var(--hit-card);
   border-radius: 12px;
@@ -215,10 +237,6 @@ body {
   transition: var(--transition);
   border: 1px solid var(--hit-blue-light);
   margin-bottom: 2rem;
-}
-
-.card:last-child {
-  margin-bottom: 0;
 }
 
 .card h2,
@@ -243,7 +261,7 @@ body {
   color: #e53e3e;
 }
 
-/* ===== 主页专属布局 ===== */
+/* ===== 主页专属 ===== */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -349,137 +367,4 @@ body {
   font-size: 0.875rem;
   opacity: 0.7;
   text-align: center;
-  margin-top: 0.75rem;
-}
-
-/* ===== 按钮 ===== */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
-  text-align: center;
-}
-
-.btn-primary {
-  background: var(--hit-blue);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #002244;
-  transform: translateY(-2px);
-}
-
-.center-button {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* ===== 主题切换按钮（由 JS 注入）===== */
-.theme-toggle {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--hit-card);
-  border: 1px solid var(--hit-blue-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.12);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.08);
-  background: var(--hit-blue-light);
-}
-
-.theme-toggle svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--hit-gray);
-}
-
-/* ===== 动画系统 ===== */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-delay {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
-}
-
-.fade-in-delay-2 {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
-}
-
-.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in, .fade-in-delay, .fade-in-delay-2, .visible {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/* ===== 响应式断点 ===== */
-@media (max-width: 640px) {
-  .main-nav .container {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .card,
-  .project-card {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn {
-    padding: 0.5rem 1rem;
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  .links-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+  margin-top: 0
