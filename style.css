@@ -369,7 +369,7 @@ body {
   text-align: center;
   margin-top: 0
 
-  /* ===== 笔记列表样式 ===== */
+  /* ===== 笔记列表：一行布局（标题 + 元信息） ===== */
 .note-list {
   display: flex;
   flex-direction: column;
@@ -382,11 +382,13 @@ body {
   align-items: center;
   padding: 1rem;
   border-radius: 8px;
-  text-decoration: none !important; /* 关键：移除下划线 */
+  text-decoration: none !important;
   color: inherit;
   background: var(--hit-card);
   transition: background-color 0.2s ease;
   border: 1px solid var(--hit-blue-light);
+  /* 确保 a 标签能包裹块级元素 */
+  width: 100%;
 }
 
 .note-item:hover {
@@ -398,10 +400,11 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--hit-blue);
-  flex: 1 1 65%;
+  flex: 1;
   min-width: 0;
   word-break: break-word;
-  text-decoration: none !important; /* 确保标题无下划线 */
+  /* 关键：移除链接下划线 */
+  text-decoration: none !important;
 }
 
 .note-meta {
@@ -410,11 +413,11 @@ body {
   font-size: 0.9rem;
   color: var(--hit-gray);
   white-space: nowrap;
-  flex: 0 0 auto;
-  text-decoration: none !important; /* 元信息也无下划线 */
+  /* 关键：防止被继承下划线 */
+  text-decoration: none !important;
 }
 
-/* 小屏适配：堆叠显示 */
+/* 小屏优化：堆叠显示 */
 @media (max-width: 600px) {
   .note-item {
     flex-direction: column;
