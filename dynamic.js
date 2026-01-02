@@ -68,11 +68,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 });
-// ===== 汉堡菜单交互（手机端）=====
-document.querySelector('.hamburger')?.addEventListener('click', function () {
-  const menu = document.querySelector('.mobile-menu');
-  menu.classList.toggle('open');
+// dynamic.js
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // 点击菜单项后自动收起（可选但推荐）
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(() => mobileMenu.classList.remove('open'), 300);
+      });
+    });
+  }
 });
+
 
 
 
