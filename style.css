@@ -1,6 +1,6 @@
-/* ===== HIT Design System v2.0 ===== */
+/* ===== HIT Design System v2.0 —— 统一主站样式 ===== */
 :root {
-  /* 色彩系统 */
+  /* 色彩系统 - 浅色模式 */
   --hit-blue: #003366;
   --hit-blue-light: #e6f0fa;
   --hit-gray: #4a5568;
@@ -18,6 +18,7 @@
 }
 
 [data-theme="dark"] {
+  /* 深色模式覆盖 */
   --hit-bg: #0f172a;
   --hit-card: #1e293b;
   --hit-blue: #38bdf8;
@@ -47,7 +48,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* ===== 导航栏 ===== */
+/* ===== 全局导航 ===== */
 .main-nav {
   background: var(--hit-card);
   border-bottom: 1px solid var(--hit-blue-light);
@@ -60,13 +61,19 @@ body {
   padding: 0.6rem 1.5rem;
 }
 
+.main-nav .container {
+  display: flex;
+  gap: 2rem;
+}
+
 .main-nav-links {
   display: flex;
   gap: 2rem;
   list-style: none;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav .container > a {
   color: var(--hit-gray);
   text-decoration: none;
   font-weight: 500;
@@ -75,7 +82,9 @@ body {
   transition: var(--transition);
 }
 
-.main-nav a::after {
+/* 支持两种结构：ul 内 a 或直接 a */
+.main-nav a::after,
+.main-nav .container > a::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -87,12 +96,16 @@ body {
 }
 
 .main-nav a:hover,
-.main-nav a.active {
+.main-nav a.active,
+.main-nav .container > a:hover,
+.main-nav .container > a.active {
   color: var(--hit-blue);
 }
 
 .main-nav a:hover::after,
-.main-nav a.active::after {
+.main-nav a.active::after,
+.main-nav .container > a:hover::after,
+.main-nav .container > a.active::after {
   width: 100%;
 }
 
@@ -149,10 +162,10 @@ body {
   display: block;
 }
 
-/* ===== 英雄区 ===== */
+/* ===== 英雄区（Hero）===== */
 .hero {
   text-align: center;
-  padding: 4rem 0 2rem;
+  padding: 4rem 0 3rem;
   background: linear-gradient(135deg, var(--hit-blue) 0%, #002244 100%);
   color: white;
 }
@@ -164,7 +177,36 @@ body {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== 卡片系统 ===== */
+.highlight {
+  color: #60a5fa; /* 浅蓝高亮，深色模式也清晰 */
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 1rem 0 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== 通用区块 ===== */
+.section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--hit-blue);
+  font-size: 1.75rem;
+}
+
+/* ===== 卡片系统（用于自我介绍 & 主页）===== */
 .card {
   background: var(--hit-card);
   border-radius: 12px;
@@ -179,9 +221,10 @@ body {
   margin-bottom: 0;
 }
 
-.card h2 {
-  margin-top: 0;
+.card h2,
+.card h3 {
   color: var(--hit-blue);
+  margin-top: 0;
 }
 
 .card ul {
@@ -200,6 +243,42 @@ body {
   color: #e53e3e;
 }
 
+/* ===== 主页专属布局 ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.bg-light {
+  background-color: var(--hit-blue-light);
+}
+
+.projects {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: var(--hit-card);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.05);
+  border: 1px solid var(--hit-blue-light);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--hit-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
 /* ===== 页脚 ===== */
 .footer {
   background: var(--hit-card);
@@ -212,12 +291,15 @@ body {
   color: var(--hit-blue);
   margin-bottom: 1rem;
   font-size: 1.25rem;
+  text-align: center;
 }
 
 .links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .links-grid a {
@@ -227,6 +309,7 @@ body {
   text-decoration: none;
   border-radius: 4px;
   transition: var(--transition);
+  text-align: center;
 }
 
 .links-grid a:hover {
@@ -270,11 +353,6 @@ body {
 }
 
 /* ===== 按钮 ===== */
-.center-button {
-  text-align: center;
-  margin-top: 2rem;
-}
-
 .btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -282,6 +360,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
+  text-align: center;
 }
 
 .btn-primary {
@@ -294,7 +373,12 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== 主题切换按钮（由 JS 创建，但样式预定义）===== */
+.center-button {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ===== 主题切换按钮（由 JS 注入）===== */
 .theme-toggle {
   position: fixed;
   top: 1.5rem;
@@ -331,22 +415,34 @@ body {
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
 .visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in, .visible {
+  .fade-in, .fade-in-delay, .fade-in-delay-2, .visible {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
 }
 
-/* ===== 响应式 ===== */
+/* ===== 响应式断点 ===== */
 @media (max-width: 640px) {
-  .main-nav-links {
+  .main-nav .container {
     display: none;
   }
 
@@ -358,12 +454,32 @@ body {
     font-size: 2rem;
   }
 
-  .card {
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .card,
+  .project-card {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
   .btn {
     padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .links-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
