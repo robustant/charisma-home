@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 导航（提升为全局组件） -->
+  <nav class="main-nav">
+    <div class="container">
+      <a href="index.html" class="active">主页</a>
+      <a href="self-introduction.html">自我介绍</a>
+      <a href="notes/">笔记</a>
+    </div>
+  </nav>
+
   <!-- 主页 -->
   <header class="hero">
     <div class="container">
@@ -51,13 +60,12 @@
     <div class="container">
       <h2 class="section-title">近期实践</h2>
       <div class="projects">
-
-        <!-- <div class="project-card fade-in-delay">
+        <!-- 示例：可随时添加 -->
+        <div class="project-card fade-in-delay">
           <h3>研究笔记系统</h3>
           <p>正在构建 Markdown 知识库原型，用于课程总结与科研沉淀。</p>
-          <a href="#" class="project-link">GitHub →</a>
-        </div> -->
-        
+          <a href="notes/2026-01-02-git-tips.html" class="project-link">查看笔记 →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -68,11 +76,11 @@
     <div class="hit-links">
       <h3>📚 哈工大友链</h3>
       <div class="links-grid">
-        <a href="https://www.hit.edu.cn/" target="_blank">学校官网</a>
-        <a href="https://som.hit.edu.cn/" target="_blank">经管学院</a>
-        <a href="https://lib.hit.edu.cn/" target="_blank">图书馆</a>
-        <a href="https://ivpn.hit.edu.cn/" target="_blank">校外登录</a>
-        <a href="http://i.hit.edu.cn/index#/app/home/index" target="_blank">校内登录</a>
+        <a href="https://www.hit.edu.cn/" target="_blank" aria-label="哈尔滨工业大学官网">学校官网</a>
+        <a href="https://som.hit.edu.cn/" target="_blank" aria-label="经管学院">经管学院</a>
+        <a href="https://lib.hit.edu.cn/" target="_blank" aria-label="图书馆">图书馆</a>
+        <a href="https://ivpn.hit.edu.cn/" target="_blank" aria-label="校外登录">校外登录</a>
+        <a href="http://i.hit.edu.cn/index#/app/home/index" target="_blank" aria-label="校内门户">校内门户</a>
       </div>
     </div>
 
@@ -80,19 +88,13 @@
     <p class="hitu-slogan">规格严格，功夫到家</p>
 
     <!-- 版权 -->
-    <p>© 2026 Charisma | 哈尔滨工业大学 </p>
+    <p>© 2026 Charisma | 哈尔滨工业大学</p>
     <div class="social-links">
       <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
-      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="Email">✉️</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="邮箱">✉️</a>
     </div>
   </footer>
 
   <script src="dynamic.js"></script>
 </body>
 </html>
-
-
-
-
-
-
