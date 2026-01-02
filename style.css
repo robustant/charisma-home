@@ -464,6 +464,54 @@ body {
   }
 }
 
+/* ===== 响应式导航：手机端紧凑模式（无 JS）===== */
+.main-nav .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 0.6rem 0; /* 原 0.75rem → 略压缩 */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.main-nav .container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 手机端：缩小字体 + 降低行高 + 压缩内边距 */
+@media (max-width: 640px) {
+  .main-nav .container {
+    padding: 0.4rem 0.8rem; /* 高度从 ~56px → 38px */
+    gap: 1.2rem; /* 减小间隙 */
+  }
+
+  .main-nav a {
+    font-size: 0.875rem; /* 原 1rem */
+    line-height: 1.4;
+    padding: 0.35rem 0.7rem; /* 内边距微调 */
+    border-radius: 6px;
+  }
+
+  /* 活跃项高亮更克制 */
+  .main-nav a.active {
+    background: var(--hit-blue-light);
+    color: var(--hit-blue);
+  }
+
+  /* 关键：让导航栏“贴顶但不高耸” */
+  .main-nav {
+    position: relative; /* 不用 fixed，避免遮挡 */
+    z-index: 1;
+  }
+
+  /* 首屏内容上移补偿（防被轻微遮挡） */
+  body:not(.no-nav-offset) > :first-child {
+    margin-top: 38px; /* 导航高度 ≈38px，给首屏留空 */
+  }
+}
+
 
 
 
