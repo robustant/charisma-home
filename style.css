@@ -513,6 +513,65 @@ body {
 }
 
 
+/* ===== 移动端汉堡菜单 ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 28px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--hit-gray);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 手机端显示汉堡，隐藏文字导航 */
+@media (max-width: 640px) {
+  .container {
+    display: none; /* 隐藏原导航 */
+  }
+  .hamburger {
+    display: flex;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--hit-card);
+    border-bottom: 1px solid var(--hit-blue-light);
+    z-index: 90;
+    padding: 0.75rem 0;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.06);
+  }
+  .mobile-menu a {
+    display: block;
+    padding: 0.6rem 1.5rem;
+    color: var(--hit-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  .mobile-menu a:hover {
+    background: var(--hit-blue-light);
+    color: var(--hit-blue);
+  }
+  .mobile-menu.open {
+    display: block;
+  }
+}
+
 
 
 
