@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git 实用技巧速查 | Charisma</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Git 实用技巧速查</h1>
+      <p>2026-01-02 | 工具类 · 高频操作备忘</p>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <a href="../index.html">主页</a>
+      <a href="../self-introduction.html">自我介绍</a>
+      <a href="../notes/">← 笔记列表</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="card">
+      <div class="note-meta">
+        <span>📅 2026-01-02</span>
+        <span>🏷️ git, 工具</span>
+      </div>
+
+      <h2>1. 撤销最近一次提交（保留工作区修改）</h2>
+      <pre><code>git reset --soft HEAD~1</code></pre>
+
+      <h2>2. 强制推送（慎用！）</h2>
+      <pre><code>git push --force-with-lease</code></pre>
+
+      <h2>3. 查看某次提交的变更文件</h2>
+      <pre><code>git diff --name-only HEAD~1</code></pre>
+
+      <h2>4. 忽略已跟踪文件的修改</h2>
+      <pre><code>git update-index --assume-unchanged &lt;file&gt;</code></pre>
+
+      <blockquote>
+        <p>“Git 是时间机器，不是备份工具。” —— 习惯用 <code>git log --oneline</code> 回溯历史。</p>
+      </blockquote>
+    </section>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="../notes/" class="btn">← 返回笔记列表</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    </div>
+  </footer>
+
+  <script src="../dynamic.js"></script>
+</body>
+</html>
