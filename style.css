@@ -1,13 +1,13 @@
 /* ===== HIT Design System v2.0 ===== */
 :root {
   /* 色彩系统 */
-  --hit-blue: #003366;          /* 校徽蓝 - 主色 */
-  --hit-blue-light: #e6f0fa;    /* 浅蓝灰 - 背景/强调 */
-  --hit-gray: #4a5568;          /* 正文灰 */
-  --hit-gray-light: #a0aec0;    /* 辅助灰 */
+  --hit-blue: #003366;
+  --hit-blue-light: #e6f0fa;
+  --hit-gray: #4a5568;
+  --hit-gray-light: #a0aec0;
   --hit-white: #ffffff;
-  --hit-bg: #f8fafc;            /* 护眼主背景 */
-  --hit-card: #ffffff;          /* 卡片白 */
+  --hit-bg: #f8fafc;
+  --hit-card: #ffffff;
 
   /* 字体 */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
@@ -41,148 +41,31 @@ body {
   transition: var(--transition);
 }
 
-/* ===== 布局 ===== */
 .container {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* ===== 全局组件 ===== */
-.hero {
-  text-align: center;
-  padding: 4rem 0 2rem;
-  background: linear-gradient(135deg, var(--hit-blue) 0%, #002244 100%);
-  color: white;
-}
-.hero .container {
-  position: relative;
-  z-index: 2;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.hero .subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
-}
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.section {
-  padding: 4rem 0;
-}
-.bg-light {
-  background-color: var(--hit-bg);
-}
-
-.section-title {
-  font-size: 1.75rem;
-  color: var(--hit-blue);
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -0.5rem;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--hit-blue);
-  border-radius: 2px;
-}
-
-/* ===== 卡片系统 —— 优化间距与层次感 ===== */
-.card,
-.project-card {
-  background: var(--hit-card);
-  border-radius: 12px;
-  padding: 2rem; /* 原 1.5rem → 更宽松 */
-  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.06); /* 原 0.08 → 更柔和 */
-  transition: var(--transition);
-  border: 1px solid var(--hit-blue-light);
-  margin-bottom: 2rem; /* ⭐ 关键：模块间垂直间距 */
-}
-
-/* 首个卡片不加顶部间距，避免头部冗余 */
-.container > .card:first-child,
-.container > .project-card:first-child {
-  margin-top: 0;
-}
-
-/* 最后一个卡片去掉底部间距（避免页脚前空隙过大） */
-.container > .card:last-child,
-.container > .project-card:last-child {
-  margin-bottom: 0;
-}
-
-/* 项目列表容器：增加整体外边距 */
-.projects {
-  margin-top: 1.8rem;
-  margin-bottom: 2.5rem; /* 模块级留白 */
-}
-
-/* 笔记列表项：独立间距控制 */
-.note-list .note-item {
-  margin-bottom: 1.6rem; /* 略小于 card，因本身是内联卡片 */
-}
-.note-list .note-item:last-child {
-  margin-bottom: 0;
-}
-
-/* 响应式：手机端适当收紧，但不牺牲呼吸感 */
-@media (max-width: 640px) {
-  .card,
-  .project-card {
-    padding: 1.5rem; /* 小屏略紧凑 */
-    margin-bottom: 1.5rem;
-  }
-  .projects {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  .note-list .note-item {
-    margin-bottom: 1.3rem;
-  }
-}
-
-/* 卡片悬停时增加轻微抬升 + 阴影加深，强化“可点击”暗示 */
-.card:hover,
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0, 51, 102, 0.12); /* 比默认稍强 */
-}
-
-/* 对于纯文本卡片（如自我介绍中的 section.card），可加一点顶部留白 */
-.card h2:first-child {
-  margin-top: 0.25rem; /* 避免标题紧贴上边框 */
-}
-
-
-/* ===== 导航 ===== */
+/* ===== 导航栏 ===== */
 .main-nav {
   background: var(--hit-card);
   border-bottom: 1px solid var(--hit-blue-light);
   position: sticky;
   top: 0;
   z-index: 100;
-}
-.main-nav .container {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0.75rem 0;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.5rem;
 }
+
+.main-nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
 .main-nav a {
   color: var(--hit-gray);
   text-decoration: none;
@@ -191,6 +74,7 @@ body {
   padding: 0.25rem 0;
   transition: var(--transition);
 }
+
 .main-nav a::after {
   content: "";
   position: absolute;
@@ -201,319 +85,17 @@ body {
   background: var(--hit-blue);
   transition: var(--transition);
 }
-.main-nav a:hover {
+
+.main-nav a:hover,
+.main-nav a.active {
   color: var(--hit-blue);
 }
+
 .main-nav a:hover::after,
 .main-nav a.active::after {
   width: 100%;
 }
 
-/* ===== 页脚 ===== */
-.footer {
-  background: var(--hit-card);
-  border-top: 1px solid var(--hit-blue-light);
-  padding: 2.5rem 0 1.5rem;
-  margin-top: 3rem;
-}
-.hit-links {
-  margin-bottom: 2rem;
-}
-.hit-links h3 {
-  color: var(--hit-blue);
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-}
-.links-grid a {
-  display: block;
-  padding: 0.5rem;
-  color: var(--hit-gray);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: var(--transition);
-}
-.links-grid a:hover {
-  background: var(--hit-blue-light);
-  color: var(--hit-blue);
-}
-
-.hitu-slogan {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: var(--hit-blue);
-  text-align: center;
-  margin: 1.5rem 0;
-  font-weight: 600;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-.social-links a {
-  font-size: 1.4rem;
-  color: var(--hit-gray);
-  text-decoration: none;
-  transition: var(--transition);
-}
-.social-links a:hover {
-  color: var(--hit-blue);
-  transform: scale(1.2);
-}
-
-/* ===== 动画系统 ===== */
-.fade-in,
-.fade-in-delay,
-.fade-in-delay-2 {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-in-delay { transition-delay: 0.2s; }
-.fade-in-delay-2 { transition-delay: 0.4s; }
-
-/* ===== 笔记专用 ===== */
-.note-meta {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  color: var(--hit-gray-light);
-  font-size: 0.9rem;
-}
-.note-meta span {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* ===== 响应式 ===== */
-@media (max-width: 640px) {
-  .hero h1 { font-size: 2rem; }
-  .section { padding: 3rem 0; }
-  .cta-buttons { flex-direction: column; align-items: center; }
-  .main-nav .container { flex-direction: column; gap: 0.5rem; }
-  .hit-links h3 { font-size: 1.1rem; }
-}
-
-/* ===== 减少动画（无障碍） ===== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .fade-in, .visible {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-/* ===== 主题切换按钮：固定右上角 ===== */
-.theme-toggle {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--hit-card);
-  border: 1px solid var(--hit-blue-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.12);
-  transition: all 0.3s ease;
-  z-index: 1000;
-  /* 避免被其他元素遮挡 */
-}
-.theme-toggle:hover {
-  transform: scale(1.08);
-  background: var(--hit-blue-light);
-}
-.theme-toggle svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--hit-gray);
-}
-
-/* ===== 手机端导航栏：横向滚动 + 居中 ===== */
-.main-nav .container {
-  display: flex;
-  justify-content: center;
-  gap: 1.8rem;
-  padding: 0.75rem 0;
-  flex-wrap: nowrap; /* 禁止换行 */
-  overflow-x: auto; /* 横向滚动 */
-  -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
-  scrollbar-width: none; /* Firefox 隐藏滚动条 */
-}
-.main-nav .container::-webkit-scrollbar {
-  display: none; /* Chrome/Safari 隐藏滚动条 */
-}
-
-/* 为手机端添加轻微内边距，避免贴边 */
-@media (max-width: 640px) {
-  .main-nav .container {
-    padding: 0.75rem 1rem;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .section-title {
-    font-size: 1.5rem;
-  }
-}
-
-/* ===== 页脚版权文字优化 ===== */
-.footer p:nth-of-type(3) { /* 第三个 <p>：© 2026... */
-  font-size: 0.875rem;
-  opacity: 0.7;
-  text-align: center;
-  margin: 0.75rem 0 0;
-}
-/* ===== 移动端紧凑导航 ===== */
-@media (max-width: 640px) {
-  /* 1. 隐藏文字导航，显示图标导航 */
-  .main-nav .container {
-    padding: 0.5rem 1rem;
-    height: 36px;
-    align-items: center;
-    justify-content: space-between;
-    overflow: visible; /* 允许汉堡展开 */
-  }
-
-  .main-nav a {
-    display: none; /* 默认隐藏文字链接 */
-    font-size: 0.875rem;
-  }
-
-  /* 2. 添加汉堡菜单按钮 */
-  .mobile-menu-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--hit-gray);
-    font-weight: 500;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem;
-    border-radius: 6px;
-    transition: var(--transition);
-  }
-  .mobile-menu-toggle:hover {
-    background: var(--hit-blue-light);
-    color: var(--hit-blue);
-  }
-
-  /* 3. 展开的菜单面板（初始隐藏） */
-  .mobile-menu-panel {
-    position: fixed;
-    top: 36px; /* 紧贴导航栏下方 */
-    left: 0;
-    right: 0;
-    background: var(--hit-card);
-    border-top: 1px solid var(--hit-blue-light);
-    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
-    z-index: 90;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-    overflow: hidden;
-  }
-  .mobile-menu-panel.open {
-    transform: translateY(0);
-  }
-
-  .mobile-menu-links {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
-  }
-  .mobile-menu-links a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--hit-gray);
-    text-decoration: none;
-    transition: var(--transition);
-  }
-  .mobile-menu-links a:hover,
-  .mobile-menu-links a.active {
-    background: var(--hit-blue-light);
-    color: var(--hit-blue);
-    font-weight: 600;
-  }
-
-  /* 4. 隐藏原导航文字，仅留图标区 */
-  .main-nav .container::before {
-    content: "";
-    width: 24px;
-    height: 24px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2'%3E%3Cpath d='M3 12h18M3 6h18M3 18h18'/%3E%3C/svg%3E") no-repeat center;
-    background-size: contain;
-  }
-}
-
-/* ===== 响应式导航：手机端紧凑模式（无 JS）===== */
-.main-nav .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.8rem;
-  padding: 0.6rem 0; /* 原 0.75rem → 略压缩 */
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.main-nav .container::-webkit-scrollbar {
-  display: none;
-}
-
-/* 手机端：缩小字体 + 降低行高 + 压缩内边距 */
-@media (max-width: 640px) {
-  .main-nav .container {
-    padding: 0.4rem 0.8rem; /* 高度从 ~56px → 38px */
-    gap: 1.2rem; /* 减小间隙 */
-  }
-
-  .main-nav a {
-    font-size: 0.875rem; /* 原 1rem */
-    line-height: 1.4;
-    padding: 0.35rem 0.7rem; /* 内边距微调 */
-    border-radius: 6px;
-  }
-
-  /* 活跃项高亮更克制 */
-  .main-nav a.active {
-    background: var(--hit-blue-light);
-    color: var(--hit-blue);
-  }
-
-  /* 关键：让导航栏“贴顶但不高耸” */
-  .main-nav {
-    position: relative; /* 不用 fixed，避免遮挡 */
-    z-index: 1;
-  }
-
-  /* 首屏内容上移补偿（防被轻微遮挡） */
-  body:not(.no-nav-offset) > :first-child {
-    margin-top: 38px; /* 导航高度 ≈38px，给首屏留空 */
-  }
-}
-
-
-/* ===== 移动端汉堡菜单 ===== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -535,44 +117,253 @@ body {
   transition: all 0.3s ease;
 }
 
-/* 手机端显示汉堡，隐藏文字导航 */
-@media (max-width: 640px) {
-  .container {
-    display: none; /* 隐藏原导航 */
-  }
-  .hamburger {
-    display: flex;
-  }
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: var(--hit-card);
-    border-bottom: 1px solid var(--hit-blue-light);
-    z-index: 90;
-    padding: 0.75rem 0;
-    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.06);
-  }
-  .mobile-menu a {
-    display: block;
-    padding: 0.6rem 1.5rem;
-    color: var(--hit-gray);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: var(--transition);
-  }
-  .mobile-menu a:hover {
-    background: var(--hit-blue-light);
-    color: var(--hit-blue);
-  }
-  .mobile-menu.open {
-    display: block;
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background: var(--hit-card);
+  border-bottom: 1px solid var(--hit-blue-light);
+  z-index: 90;
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.06);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: var(--hit-gray);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  background: var(--hit-blue-light);
+  color: var(--hit-blue);
+}
+
+.mobile-menu.open {
+  display: block;
+}
+
+/* ===== 英雄区 ===== */
+.hero {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  background: linear-gradient(135deg, var(--hit-blue) 0%, #002244 100%);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== 卡片系统 ===== */
+.card {
+  background: var(--hit-card);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 51, 102, 0.06);
+  transition: var(--transition);
+  border: 1px solid var(--hit-blue-light);
+  margin-bottom: 2rem;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--hit-blue);
+}
+
+.card ul {
+  padding-left: 1.25rem;
+}
+
+.card li {
+  margin-bottom: 0.75rem;
+}
+
+.card li:last-child {
+  margin-bottom: 0;
+}
+
+.heart {
+  color: #e53e3e;
+}
+
+/* ===== 页脚 ===== */
+.footer {
+  background: var(--hit-card);
+  border-top: 1px solid var(--hit-blue-light);
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 3rem;
+}
+
+.hit-links h3 {
+  color: var(--hit-blue);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.links-grid a {
+  display: block;
+  padding: 0.5rem;
+  color: var(--hit-gray);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.links-grid a:hover {
+  background: var(--hit-blue-light);
+  color: var(--hit-blue);
+}
+
+.hitu-slogan {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--hit-blue);
+  text-align: center;
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  font-size: 1.4rem;
+  color: var(--hit-gray);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--hit-blue);
+  transform: scale(1.2);
+}
+
+.footer p:last-of-type {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* ===== 按钮 ===== */
+.center-button {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--hit-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #002244;
+  transform: translateY(-2px);
+}
+
+/* ===== 主题切换按钮（由 JS 创建，但样式预定义）===== */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--hit-card);
+  border: 1px solid var(--hit-blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.12);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  background: var(--hit-blue-light);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--hit-gray);
+}
+
+/* ===== 动画系统 ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
+/* ===== 响应式 ===== */
+@media (max-width: 640px) {
+  .main-nav-links {
+    display: none;
+  }
 
+  .hamburger {
+    display: flex;
+  }
 
+  .hero h1 {
+    font-size: 2rem;
+  }
 
+  .card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+}
