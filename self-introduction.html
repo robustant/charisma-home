@@ -7,35 +7,61 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- 复用主页 header -->
+  <header class="hero">
+    <div class="container">
+      <h1>自我介绍</h1>
+      <p>哈工大 · 计算机科学与技术 硕士研究生 | 人机交互 & 前端工程化</p>
+    </div>
+  </header>
+
+  <!-- 导航（与主页一致） -->
+  <nav class="main-nav">
+    <div class="container">
+      <a href="index.html">主页</a>
+      <a href="self-introduction.html" class="active">自我介绍</a>
+      <a href="notes/">📝 笔记</a>
+    </div>
+  </nav>
+
   <div class="container">
-    <h1>自我介绍</h1>
-    <p><strong>姓名：</strong>Charisma</p>
-    <p><strong>身份：</strong>XX大学 计算机科学与技术 2026级硕士研究生</p>
-    <p><strong>研究方向：</strong>人机交互（HCI）、前端工程化</p>
+    <section class="card">
+      <h2>🎓 教育背景</h2>
+      <ul>
+        <li><strong>2022–2026</strong>：XX大学，软件工程，本科<br>GPA：3.7/4.0 | 核心课程：数据结构、操作系统、Web 开发</li>
+      </ul>
+    </section>
 
-    <h2>教育背景</h2>
-    <ul>
-      <li>2022–2026：XX大学，本科，软件工程</li>
-      <li>GPA：3.7/4.0 | 核心课程：数据结构、操作系统、Web 开发</li>
-    </ul>
+    <section class="card">
+      <h2>🛠️ 技术实践</h2>
+      <ul>
+        <li>独立开发个人主页（GitHub Pages + 原生 HTML/CSS/JS）</li>
+        <li>参与开源项目：修复文档 typo / 提交 PR（如 XXX）</li>
+        <li>熟悉 Git 工作流、CI/CD 基础</li>
+      </ul>
+    </section>
 
-    <h2>技术实践</h2>
-    <ul>
-      <li>独立开发个人主页（GitHub Pages + 原生 HTML/CSS/JS）</li>
-      <li>参与开源项目：修复文档 typo / 提交 PR（如 XXX）</li>
-      <li>熟悉 Git 工作流、CI/CD 基础</li>
-    </ul>
+    <section class="card">
+      <h2>🎯 未来计划</h2>
+      <p>希望在研究生阶段：</p>
+      <ul>
+        <li>深入理解 Web 核心原理（浏览器、网络、安全）</li>
+        <li>产出可复现的技术笔记与小工具</li>
+        <li>与社区共同成长 —— 感谢萌萌姐一路陪伴 <span class="heart">❤️</span></li>
+      </ul>
+    </section>
 
-    <h2>未来计划</h2>
-    <p>希望在研究生阶段：</p>
-    <ul>
-      <li>深入理解 Web 核心原理（浏览器、网络、安全）</li>
-      <li>产出可复现的技术笔记与小工具</li>
-      <li>与社区共同成长 —— 感谢萌萌姐一路陪伴 ❤️</li>
-    </ul>
-
-    <a href="index.html" class="btn btn-outline">返回主页</a>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" class="btn">← 返回主页</a>
+    </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    </div>
+  </footer>
+
   <script src="dynamic.js"></script>
 </body>
 </html>
