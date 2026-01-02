@@ -1,424 +1,295 @@
-/* ===== 全局重置 ===== */
+/* ===== HIT Design System v2.0 ===== */
+:root {
+  /* 色彩系统 */
+  --hit-blue: #003366;          /* 校徽蓝 - 主色 */
+  --hit-blue-light: #e6f0fa;    /* 浅蓝灰 - 背景/强调 */
+  --hit-gray: #4a5568;          /* 正文灰 */
+  --hit-gray-light: #a0aec0;    /* 辅助灰 */
+  --hit-white: #ffffff;
+  --hit-bg: #f8fafc;            /* 护眼主背景 */
+  --hit-card: #ffffff;          /* 卡片白 */
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-serif: "Songti SC", "SimSun", serif;
+
+  /* 动画 */
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-theme="dark"] {
+  --hit-bg: #0f172a;
+  --hit-card: #1e293b;
+  --hit-blue: #38bdf8;
+  --hit-blue-light: #0f172a;
+  --hit-gray: #cbd5e1;
+  --hit-gray-light: #64748b;
+  --hit-white: #0f172a;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --primary: #003366;     /* 哈工大蓝 */
-  --light: #f8f9fa;
-  --dark: #212529;
-  --gray: #6c757d;
-}
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background-color: var(--hit-bg);
+  color: var(--hit-gray);
+  font-family: var(--font-sans);
   line-height: 1.6;
-  color: var(--dark);
-  background: #fff;
+  transition: var(--transition);
 }
 
+/* ===== 布局 ===== */
 .container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* ===== Header ===== */
+/* ===== 全局组件 ===== */
 .hero {
-  padding: 5rem 0 3rem;
   text-align: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+  padding: 4rem 0 2rem;
+  background: linear-gradient(135deg, var(--hit-blue) 0%, #002244 100%);
+  color: white;
+}
+.hero .container {
+  position: relative;
+  z-index: 2;
 }
 .hero h1 {
-  font-size: 2.4rem;
-  margin-bottom: 0.8rem;
-}
-.highlight {
-  color: var(--primary);
+  font-size: 2.5rem;
   font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-.subtitle {
-  color: var(--gray);
-  font-size: 1.1rem;
+.hero .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
   margin-bottom: 1.5rem;
 }
 .cta-buttons {
   display: flex;
-  gap: 1rem;
   justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
-.btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-.btn-primary {
-  background: var(--primary);
-  color: white;
-}
-.btn-outline {
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  background: transparent;
-}
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 51, 102, 0.1);
-}
 
-/* ===== Section ===== */
 .section {
   padding: 4rem 0;
 }
+.bg-light {
+  background-color: var(--hit-bg);
+}
+
 .section-title {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  color: var(--primary);
-}
-.about-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 768px) {
-  .about-grid { grid-template-columns: 1fr 1fr; }
-}
-.card h3 {
-  margin-bottom: 0.75rem;
-  color: var(--primary);
-}
-.card ul {
-  padding-left: 1.2rem;
-}
-.card li {
-  margin-bottom: 0.5rem;
-}
-
-/* ===== HIT 友链 & 校训 ===== */
-.hit-links {
-  margin-bottom: 1.8rem;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px dashed #eee;
-}
-.hit-links h3 {
-  font-size: 1.1rem;
-  color: var(--dark);
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.7rem;
-}
-.links-grid a {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  color: var(--gray);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-.links-grid a:hover {
-  background: var(--light);
-  color: var(--primary);
-  transform: translateX(2px);
-}
-
-/* ===== 校训样式 —— 规格严格，功夫到家 ===== */
-.hitu-slogan {
-  font-family: "Microsoft YaHei", "SimSun", serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: relative;
-  display: inline-block;
-}
-.hitu-slogan::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(transparent 45%, rgba(0,0,0,0.04) 50%, transparent 55%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* ===== 动画类（保留但简化） ===== */
-.fade-in,
-.fade-in-delay,
-.fade-in-delay-2 {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-in-delay { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-
-/* ===== Footer ===== */
-.footer {
-  padding: 2rem 0;
-  text-align: center;
-  color: var(--gray);
-}
-.social-links {
-  margin-top: 1rem;
-}
-.social-links a {
-  margin: 0 0.6rem;
-  font-size: 1.3rem;
-}
-
-/* ===== 响应式 ===== */
-
-/* ===== HIT 风格 · 自我介绍页面样式 ===== */
-:root {
-  /* HIT 校色系统 */
-  --hit-blue: #003366;       /* 深蓝 - 主色（校徽蓝） */
-  --hit-light-blue: #e6f0fa; /* 浅蓝灰 - 背景/强调色 */
-  --hit-gray: #4a5568;       /* 中性灰 - 正文 */
-  --hit-gray-light: #a0aec0; /* 浅灰 - 辅助文字 */
-  --hit-white: #ffffff;
-  --hit-border: #d1d5db;
-
-  /* 字体栈：优先系统自带，兼顾中英文清晰度 */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
-  --font-serif: "Songti SC", "SimSun", serif;
-}
-
-/* 全局重置 & 基础 */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  color: var(--hit-gray);
-  background-color: var(--hit-white);
-}
-
-.container {
-  max-width: 720px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
-
-/* 标题层级 */
-h1 {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 1.75rem;
   color: var(--hit-blue);
-  text-align: center;
   margin-bottom: 1.5rem;
   position: relative;
 }
-h1::after {
+.section-title::after {
   content: "";
   position: absolute;
   bottom: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 60px;
   height: 3px;
   background: var(--hit-blue);
   border-radius: 2px;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+/* ===== 卡片系统 ===== */
+.card,
+.project-card {
+  background: var(--hit-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 51, 102, 0.08);
+  transition: var(--transition);
+  border: 1px solid var(--hit-blue-light);
+}
+.card:hover,
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 51, 102, 0.12);
+}
+
+.card h3,
+.project-card h3 {
+  font-size: 1.25rem;
   color: var(--hit-blue);
-  margin: 2.5rem 0 1.2rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 2px solid var(--hit-light-blue);
+  margin-bottom: 1rem;
 }
 
-/* 段落与列表 */
-p {
-  margin: 0.8rem 0;
+.card ul,
+.project-card ul {
+  padding-left: 1.25rem;
 }
-
-ul {
-  margin: 1rem 0;
-  padding-left: 1.5rem;
-}
-ul li {
+.card li,
+.project-card li {
   margin-bottom: 0.6rem;
   position: relative;
 }
-ul li::before {
+.card li::before,
+.project-card li::before {
   content: "•";
   color: var(--hit-blue);
   font-weight: bold;
   position: absolute;
-  left: -1.2rem;
-  top: 0.1rem;
+  left: -1.1rem;
+  top: 0.2rem;
 }
 
-/* 强调元素 */
-strong {
+/* ===== 导航 ===== */
+.main-nav {
+  background: var(--hit-card);
+  border-bottom: 1px solid var(--hit-blue-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.main-nav .container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.75rem 0;
+  flex-wrap: wrap;
+}
+.main-nav a {
   color: var(--hit-gray);
-  font-weight: 600;
-}
-
-/* 按钮样式 —— HIT 简约风 */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
-  font-weight: 500;
   text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-outline {
-  color: var(--hit-blue);
-  border: 2px solid var(--hit-blue);
-  background: transparent;
-}
-.btn-outline:hover {
-  background: var(--hit-light-blue);
-  transform: translateY(-1px);
-}
-
-/* 响应式优化 */
-@media (max-width: 640px) {
-  .container {
-    padding: 0 1rem;
-  }
-  h1 {
-    font-size: 1.875rem;
-  }
-  h2 {
-    font-size: 1.375rem;
-  }
-}
-
-/* 可选：为“萌萌姐”加一点温度 ❤️ */
-p:contains("萌萌姐") {
-  /* 注意：CSS 不支持 :contains()，需用 JS 或直接加 class */
-}
-/* 实际建议：给那句话加个 class */
-.heart-note {
-  color: #c62828;
   font-weight: 500;
   position: relative;
+  padding: 0.25rem 0;
+  transition: var(--transition);
 }
-.heart-note::after {
-  content: "❤️";
-  margin-left: 0.3rem;
-  font-size: 1rem;
-  vertical-align: middle;
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--hit-blue);
+  transition: var(--transition);
 }
-
-@media (max-width: 600px) {
-  .hero h1 { font-size: 2rem; }
-  .hitu-slogan { font-size: 1.25rem; }
-}
-
-/* ===== 自我介绍 & 笔记专用样式 ===== */
-
-/* 心形符号 */
-.heart {
-  color: #c62828;
-  vertical-align: middle;
-}
-
-/* 笔记列表卡片 */
-.note-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.note-item {
-  display: block;
-  padding: 1.2rem;
-  background: var(--card-bg);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  color: var(--text);
-}
-.note-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 51, 102, 0.08);
-  border-color: var(--hit-blue);
-}
-
-.note-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.6rem;
-}
-.note-header h3 {
-  margin: 0;
-  font-size: 1.25rem;
+.main-nav a:hover {
   color: var(--hit-blue);
 }
-.note-meta {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  display: flex;
-  gap: 0.8rem;
-}
-.note-meta span {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.note-excerpt {
-  margin: 0.5rem 0 0;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* 代码块（复用你主页已有样式，若无则补充） */
-pre {
-  background: #f6f8fa;
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-x: auto;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-}
-code {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-  background: #f0f2f5;
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-}
-
-/* 引用块 */
-blockquote {
-  border-left: 4px solid var(--hit-blue);
-  padding-left: 1.2rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: var(--text-secondary);
-}
-
-/* 导航高亮 */
-.main-nav a.active {
-  color: var(--hit-blue);
-  font-weight: 600;
-}
+.main-nav a:hover::after,
 .main-nav a.active::after {
   width: 100%;
 }
 
+/* ===== 页脚 ===== */
+.footer {
+  background: var(--hit-card);
+  border-top: 1px solid var(--hit-blue-light);
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 3rem;
+}
+.hit-links {
+  margin-bottom: 2rem;
+}
+.hit-links h3 {
+  color: var(--hit-blue);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+.links-grid a {
+  display: block;
+  padding: 0.5rem;
+  color: var(--hit-gray);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+.links-grid a:hover {
+  background: var(--hit-blue-light);
+  color: var(--hit-blue);
+}
+
+.hitu-slogan {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--hit-blue);
+  text-align: center;
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.social-links a {
+  font-size: 1.4rem;
+  color: var(--hit-gray);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.social-links a:hover {
+  color: var(--hit-blue);
+  transform: scale(1.2);
+}
+
+/* ===== 动画系统 ===== */
+.fade-in,
+.fade-in-delay,
+.fade-in-delay-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay { transition-delay: 0.2s; }
+.fade-in-delay-2 { transition-delay: 0.4s; }
+
+/* ===== 笔记专用 ===== */
+.note-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--hit-gray-light);
+  font-size: 0.9rem;
+}
+.note-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2rem; }
+  .section { padding: 3rem 0; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .main-nav .container { flex-direction: column; gap: 0.5rem; }
+  .hit-links h3 { font-size: 1.1rem; }
+}
+
+/* ===== 减少动画（无障碍） ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-in, .visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
