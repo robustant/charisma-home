@@ -8,13 +8,28 @@
 </head>
 <body>
   <!-- 导航（提升为全局组件） -->
+<!-- 导航（提升为全局组件） -->
 <nav class="main-nav">
   <div class="container">
     <a href="index.html" class="active">主页</a>
     <a href="self-introduction.html">自我介绍</a>
     <a href="notes/">笔记</a>
   </div>
+
+  <!-- ✅ 新增：汉堡按钮 + 移动菜单（仅手机端可见） -->
+  <button class="hamburger" aria-label="打开导航">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="mobile-menu">
+    <a href="index.html">主页</a>
+    <a href="self-introduction.html">自我介绍</a>
+    <a href="notes/">笔记</a>
+  </div>
 </nav>
+
 
 
 
@@ -97,6 +112,7 @@
   <script src="dynamic.js"></script>
 </body>
 </html>
+
 
 
 
