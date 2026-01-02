@@ -3,43 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charisma | 学习笔记</title>
+  <title>学习笔记 | Charisma</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  <!-- 全局导航 -->
+  <nav class="main-nav">
+    <div class="container">
+      <a href="../index.html">主页</a>
+      <a href="../self-introduction.html">自我介绍</a>
+      <a href="." class="active">笔记</a>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
   <header class="hero">
     <div class="container">
-      <h1>学习笔记</h1>
-      <p>论文阅读 · 工程实践 · 思考碎片</p>
+      <h1>📚 学习笔记</h1>
+      <p>技术原理 · 社会科学方法 · 科研思考</p>
     </div>
   </header>
-
 
   <div class="container">
     <section class="card">
       <h2>近期笔记</h2>
       <div class="note-list">
-        <a href="2026-01-02.html" class="note-item">
+        <a href="2026-01-02-causal-inference.html" class="note-item">
+          <div class="note-header">
+            <h3>因果推断入门：从相关性到因果性</h3>
+            <span class="note-meta">
+              <span>📅 2026-01-05</span>
+              <span>🏷️ 统计学 · 公共政策</span>
+            </span>
+          </div>
+          <p class="note-excerpt">理解潜在结果框架、ATE、PSM/DID/IV 方法对比，附教育回报案例。</p>
+        </a>
+
+        <a href="2026-01-02-git-tips.html" class="note-item">
           <div class="note-header">
             <h3>Git 实用技巧速查</h3>
+            <span class="note-meta">
+              <span>📅 2026-01-02</span>
+              <span>🏷️ git · 工具</span>
+            </span>
           </div>
+          <p class="note-excerpt">撤销提交、强制推送、子模块管理等高频操作备忘。</p>
+        </a>
+
+        <a href="2026-01-03-react-hooks.html" class="note-item">
+          <div class="note-header">
+            <h3>React Hooks 深度解析</h3>
+            <span class="note-meta">
+              <span>📅 2026-01-03</span>
+              <span>🏷️ react · 前端</span>
+            </span>
+          </div>
+          <p class="note-excerpt">useEffect 依赖数组陷阱、自定义 Hook 设计模式、性能优化实践。</p>
         </a>
       </div>
     </section>
 
+    <section class="card">
+      <h2>📌 使用说明</h2>
+      <ul>
+        <li>所有笔记均为 HTML 静态页，可直接在 GitHub Pages 访问</li>
+        <li>点击标题进入详情页，支持浏览器后退</li>
+        <li>建议用 VS Code + Live Server 本地预览</li>
+        <li>新增笔记？只需在 <code>notes/</code> 下创建 <code>YYYY-MM-DD-title.html</code></li>
+      </ul>
+    </section>
 
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="../index.html">返回主页</a>
-    </div>
-    
-    <div style="text-align: center; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
-      💡 笔记持续更新中 | 欢迎通过 GitHub 提交反馈
+      <a href="../index.html" class="btn btn-primary">← 返回主页</a>
     </div>
   </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Charisma | HIT</p>
+  <footer class="footer">
+    <div class="hit-links">
+      <h3>🔍 笔记分类</h3>
+      <div class="links-grid">
+        <a href="#" aria-label="统计学笔记">统计学</a>
+        <a href="#" aria-label="前端技术">前端</a>
+        <a href="#" aria-label="公共管理">公共管理</a>
+        <a href="#" aria-label="工具链">工具链</a>
+        <a href="#" aria-label="读书笔记">读书</a>
+      </div>
+    </div>
+    <p class="hitu-slogan">规格严格，功夫到家</p>
+    <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    <div class="social-links">
+      <a href="https://github.com/robustant" target="_blank">🐙</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn">✉️</a>
     </div>
   </footer>
 
