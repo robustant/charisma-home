@@ -10,7 +10,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.1 }
 );
 
-// 监听所有带 fade-in 类的元素
+// 监听所有带 fade-in 类的元素（精简选择器）
 document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2').forEach(el => {
   observer.observe(el);
 });
@@ -27,4 +27,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
+});
+
+// ✅ 可选：校训微动效（加载后沉稳浮现）
+document.addEventListener('DOMContentLoaded', () => {
+  const slogan = document.querySelector('.hitu-slogan');
+  if (slogan) {
+    slogan.style.opacity = '0';
+    slogan.style.transform = 'translateY(8px)';
+    setTimeout(() => {
+      slogan.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      slogan.style.opacity = '1';
+      slogan.style.transform = 'translateY(0)';
+    }, 150);
+  }
 });
