@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charisma | 自我介绍</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- 全局导航 -->
-<nav class="main-nav">
-  <div class="container">
-    <a href="index.html" class="active">主页</a>
-    <a href="self-introduction.html">自我介绍</a>
-    <a href="notes/">笔记</a>
-  </div>
-</nav>
-
-
-
+  <nav class="main-nav">
+    <ul class="main-nav-links">
+      <li><a href="index.html">主页</a></li>
+      <li><a href="self-introduction.html" class="active">自我介绍</a></li>
+      <li><a href="notes/">笔记</a></li>
+    </ul>
+    <button class="hamburger" aria-label="切换导航菜单">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-menu">
+      <a href="index.html">主页</a>
+      <a href="self-introduction.html" class="active">自我介绍</a>
+      <a href="notes/">笔记</a>
+    </div>
+  </nav>
 
   <!-- 英雄区 -->
   <header class="hero">
@@ -28,21 +35,25 @@
   </header>
 
   <div class="container">
-    <section class="card">
+    <section class="card fade-in">
       <h2>🎓 教育背景</h2>
       <ul>
-        <li><strong>2022–2026</strong>：XX大学，软件工程，本科<br>GPA：3.7/4.0 | 核心课程：数据结构、操作系统、Web 开发</li>
+        <li>
+          <strong>2022–2026</strong>：XX大学，软件工程，本科<br>
+          GPA：3.7/4.0 | 核心课程：数据结构、操作系统、Web 开发<br>
+          <em>（现于哈尔滨工业大学攻读公共管理硕士）</em>
+        </li>
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card fade-in">
       <h2>📄 论文发表</h2>
       <ul>
         <li>待补充（研究进行中）</li>
       </ul>
     </section>
-    
-    <section class="card">
+
+    <section class="card fade-in">
       <h2>🛠️ 技术实践</h2>
       <ul>
         <li>独立开发个人主页（GitHub Pages + 原生 HTML/CSS/JS）</li>
@@ -51,7 +62,7 @@
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card fade-in">
       <h2>🎯 未来计划</h2>
       <p>希望在研究生阶段：</p>
       <ul>
@@ -61,7 +72,7 @@
       </ul>
     </section>
 
-    <div style="text-align: center; margin-top: 2rem;">
+    <div class="center-button">
       <a href="index.html" class="btn btn-primary">← 返回主页</a>
     </div>
   </div>
@@ -80,8 +91,8 @@
     <p class="hitu-slogan">规格严格，功夫到家</p>
     <p>© 2026 Charisma | HIT</p>
     <div class="social-links">
-      <a href="https://github.com/robustant" target="_blank">🐙</a>
-      <a href="mailto:25s010094@stu.hit.edu.cn">✉️</a>
+      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="发送邮件">✉️</a>
     </div>
   </footer>
 
