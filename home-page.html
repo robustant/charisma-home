@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的个人主页</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 主页 -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="fade-in">你好，我是<span class="highlight">小明</span></h1>
+      <p class="subtitle fade-in-delay">前端开发者 | 热爱简洁设计与技术探索</p>
+      <div class="cta-buttons fade-in-delay-2">
+        <a href="#about" class="btn btn-primary">了解更多</a>
+        <a href="mailto:hello@example.com" class="btn btn-outline">联系我</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 关于我 -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">关于我</h2>
+      <div class="about-grid">
+        <div class="card fade-in">
+          <h3>技能</h3>
+          <ul>
+            <li>HTML / CSS / JavaScript</li>
+            <li>React / Vue（基础）</li>
+            <li>Git / GitHub</li>
+            <li>响应式设计</li>
+          </ul>
+        </div>
+        <div class="card fade-in-delay">
+          <h3>兴趣</h3>
+          <ul>
+            <li>极简主义设计</li>
+            <li>开源贡献</li>
+            <li>摄影 & 阅读</li>
+            <li>咖啡与散步</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">近期项目</h2>
+      <div class="projects">
+        <div class="project-card fade-in">
+          <h3>简约个人页</h3>
+          <p>用 HTML/CSS/JS 实现的轻量级主页，专注体验与性能。</p>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+        <div class="project-card fade-in-delay">
+          <h3>待更新...</h3>
+          <p>正在构建一个基于 Vite 的工具集，敬请期待！</p>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 小明 | 使用 GitHub Pages 部署</p>
+    <div class="social-links">
+      <a href="https://github.com/your-username" target="_blank" aria-label="GitHub">🐙</a>
+      <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn">💼</a>
+      <a href="mailto:hello@example.com" aria-label="Email">✉️</a>
+    </div>
+  </footer>
+
+  <script src="dynamic.js"></script>
+</body>
+</html>
