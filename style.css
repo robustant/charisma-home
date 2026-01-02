@@ -328,3 +328,97 @@ p:contains("萌萌姐") {
   .hitu-slogan { font-size: 1.25rem; }
 }
 
+/* ===== 自我介绍 & 笔记专用样式 ===== */
+
+/* 心形符号 */
+.heart {
+  color: #c62828;
+  vertical-align: middle;
+}
+
+/* 笔记列表卡片 */
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.note-item {
+  display: block;
+  padding: 1.2rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: var(--text);
+}
+.note-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 51, 102, 0.08);
+  border-color: var(--hit-blue);
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+.note-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--hit-blue);
+}
+.note-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.8rem;
+}
+.note-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.note-excerpt {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 代码块（复用你主页已有样式，若无则补充） */
+pre {
+  background: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background: #f0f2f5;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* 引用块 */
+blockquote {
+  border-left: 4px solid var(--hit-blue);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* 导航高亮 */
+.main-nav a.active {
+  color: var(--hit-blue);
+  font-weight: 600;
+}
+.main-nav a.active::after {
+  width: 100%;
+}
+
