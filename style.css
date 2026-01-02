@@ -110,7 +110,7 @@ body {
   box-shadow: 0 6px 18px rgba(0, 51, 102, 0.06); /* 原 0.08 → 更柔和 */
   transition: var(--transition);
   border: 1px solid var(--hit-blue-light);
-  margin-bottom: 3rem; /* ⭐ 关键：模块间垂直间距 */
+  margin-bottom: 2rem; /* ⭐ 关键：模块间垂直间距 */
 }
 
 /* 首个卡片不加顶部间距，避免头部冗余 */
@@ -382,6 +382,7 @@ body {
   text-align: center;
   margin: 0.75rem 0 0;
 }
+
 
 
 
