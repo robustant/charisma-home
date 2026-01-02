@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html>
-<head><title>笔记列表</title></head>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学习笔记 | Charisma</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
 <body>
-  <h1>📝 笔记</h1>
-  <ul id="note-list"></ul>
+  <header class="hero">
+    <div class="container">
+      <h1>📚 学习笔记</h1>
+      <p>技术原理 · 工程实践 · 思考碎片</p>
+    </div>
+  </header>
 
-  <script>
-    fetch('list.json')
-      .then(res => res.json())
-      .then(notes => {
-        const ul = document.getElementById('note-list');
-        notes.forEach(n => {
-          const li = document.createElement('li');
-          li.innerHTML = `<a href="${n.file}">${n.title}</a> <small>${n.date}</small>`;
-          ul.appendChild(li);
-        });
-      });
-  </script>
+  <nav class="main-nav">
+    <div class="container">
+      <a href="../index.html">主页</a>
+      <a href="../self-introduction.html">自我介绍</a>
+      <a href="." class="active">笔记</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="card">
+      <h2>近期笔记</h2>
+      <div class="note-list">
+        <a href="2026-01-02-git-tips.html" class="note-item">
+          <div class="note-header">
+            <h3>Git 实用技巧速查</h3>
+            <span class="note-meta">📅 2026-01-02 · 🏷️ git, 工具</span>
+          </div>
+          <p class="note-excerpt">撤销提交、强制推送、子模块管理等高频操作备忘。</p>
+        </a>
+
+        <a href="2026-01-03-react-hooks.html" class="note-item">
+          <div class="note-header">
+            <h3>React Hooks 深度解析</h3>
+            <span class="note-meta">📅 2026-01-03 · 🏷️ react, 前端</span>
+          </div>
+          <p class="note-excerpt">useEffect 依赖数组陷阱、自定义 Hook 设计模式、性能优化实践。</p>
+        </a>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+      💡 笔记持续更新中 | 欢迎通过 GitHub 提交反馈
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    </div>
+  </footer>
+
+  <script src="../dynamic.js"></script>
 </body>
 </html>
