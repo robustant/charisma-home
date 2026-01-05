@@ -8,69 +8,6 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 
-<script>
-// 等待 DOM 加载完成
-document.addEventListener('DOMContentLoaded', function () {
-  // 所有 <pre> 元素
-  const pres = document.querySelectorAll('pre');
-
-  pres.forEach(pre => {
-    // 跳过不含 <code> 的 pre
-    const code = pre.querySelector('code');
-    if (!code) return;
-
-    // 创建复制按钮
-    const button = document.createElement('button');
-    button.className = 'copy-button';
-    button.textContent = '复制';
-    button.setAttribute('aria-label', '复制代码');
-
-    // 插入到 pre 内部
-    pre.appendChild(button);
-
-    // 复制逻辑
-    button.addEventListener('click', () => {
-      const text = code.innerText;
-
-      // 使用 Clipboard API
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(() => {
-          // 成功反馈
-          button.textContent = '已复制';
-          button.classList.add('copied');
-          setTimeout(() => {
-            button.textContent = '复制';
-            button.classList.remove('copied');
-          }, 2000);
-        }).catch(err => {
-          console.warn('复制失败:', err);
-        });
-      } else {
-        // 降级方案（旧浏览器）
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-          document.execCommand('copy');
-          button.textContent = '已复制';
-          button.classList.add('copied');
-          setTimeout(() => {
-            button.textContent = '复制';
-            button.classList.remove('copied');
-          }, 2000);
-        } catch (err) {
-          alert('复制失败，请手动选择代码复制');
-        }
-        document.body.removeChild(textarea);
-      }
-    });
-  });
-});
-</script>
-
 <body>
   <!-- 全局导航 -->
   <nav class="main-nav">
@@ -158,8 +95,7 @@ gen did = treat * (time == 2023)
 reg hours i.treat##i.time, vce(cluster district_id)
 
 // 或等价写法
-reg hours treat post did, vce(cluster district_id)
-</code></pre>
+reg hours treat post did, vce(cluster district_id)</code></pre>
       <p>✅ 核心系数 <code>did</code> 即为政策的平均处理效应（ATT）。聚类标准误（<code>cluster</code>）控制区级相关性。</p>
 
       <h3>小结</h3>
