@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charisma | 因果推断入门</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <!-- 全局导航 -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <ul class="main-nav-links">
+        <li><a href="../index.html">主页</a></li>
+        <li><a href="../self-introduction.html">自我介绍</a></li>
+        <li><a href="../notes/">笔记</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="切换深色/浅色模式">
+        <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.758a.75.75 0 001.06-1.061l-1.59-1.59a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" />
+        </svg>
+      </button>
+
+      <button class="hamburger" aria-label="切换导航菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu">
+      <a href="../index.html">主页</a>
+      <a href="../self-introduction.html">自我介绍</a>
+      <a href="../notes/">笔记</a>
+    </div>
+  </nav>
+
+  <!-- 标题区 -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="fade-in">git是什么</h1>
+      <p class="subtitle fade-in-delay">一种上手就不想放下的版本管理工具</p>
+      <div class="every-note-meta fade-in-delay">
+        <time class="time-label">2026-01-06</time>
+        <span class="article-label">编程实践</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="card fade-in">
+      <h2>Git 核心价值与最佳实践指南</h2>
+
+      <h3>一、分支的核心价值：为"意图"提供容器</h3>
+      <p><strong>核心理念：</strong> 分支让代码演进从"一堆修改"变成"一系列有逻辑的步骤"</p>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>对比维度</th>
+            <th>无分支开发</th>
+            <th>有分支开发</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>修改记录</strong></td>
+            <td>混乱模糊（如 <code>commit: update files</code>）</td>
+            <td>清晰结构化（如 <code>feat: add DID implementation</code>）</td>
+          </tr>
+          <tr>
+            <td><strong>项目状态</strong></td>
+            <td>主干可能处于"半完成"状态</td>
+            <td>主干始终稳定可用</td>
+          </tr>
+          <tr>
+            <td><strong>回溯难度</strong></td>
+            <td>高（需翻阅大量无关提交）</td>
+            <td>低（一次合并 = 一个完整功能）</td>
+          </tr>
+          <tr>
+            <td><strong>心智负担</strong></td>
+            <td>"我上次改到哪了？"</td>
+            <td>"这个功能在独立分支中已完成"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>二、分支命名规范（笔记项目专用）</h3>
+      <p><strong>基本格式：</strong> <code>&lt;类型&gt;/&lt;简短描述&gt;</code>（全小写 + 连字符分隔）</p>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>类型前缀</th>
+            <th>适用场景</th>
+            <th>示例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>note/</code></td>
+            <td>新增或整理笔记</td>
+            <td><code>note/git-branching-model</code></td>
+          </tr>
+          <tr>
+            <td><code>draft/</code></td>
+            <td>草稿/未完成内容</td>
+            <td><code>draft/book-summary-atomic-habits</code></td>
+          </tr>
+          <tr>
+            <td><code>fix/</code></td>
+            <td>修正错别字/格式/链接</td>
+            <td><code>fix/typo-in-python-note</code></td>
+          </tr>
+          <tr>
+            <td><code>update/</code></td>
+            <td>更新已有内容</td>
+            <td><code>update/react-hooks-guide-2026</code></td>
+          </tr>
+          <tr>
+            <td><code>topic/</code></td>
+            <td>新建主题系列</td>
+            <td><code>topic/web-security</code></td>
+          </tr>
+          <tr>
+            <td><code>config/</code></td>
+            <td>修改配置/结构</td>
+            <td><code>config/reorganize-note-folders</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <p><strong>命名原则：</strong></p>
+        <ul>
+          <li>✅ 全小写 + 连字符分隔（<code>note/git-branching</code>）</li>
+          <li>❌ 避免空格/特殊符号（<code>note/new stuff!</code>）</li>
+          <li>✅ 语义明确（<code>note/markdown-syntax</code>）</li>
+          <li>❌ 避免模糊词（<code>note/new-stuff</code>）</li>
+        </ul>
+      </div>
+
+      <h3>三、Git 常用命令速查</h3>
+
+      <h4>1. 基础配置</h4>
+      <pre><code class="language-bash">git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+# user.name：给人看的提交者身份
+# user.email：给GitHub贡献图识别的账号</code></pre>
+
+      <h4>2. 仓库操作</h4>
+      <pre><code class="language-bash">git init                 # 初始化新仓库
+git clone &lt;url&gt;           # 克隆远程仓库
+git status               # 查看工作区状态
+git log --oneline        # 简洁查看提交历史</code></pre>
+
+      <h4>3. 提交流程</h4>
+      <pre><code class="language-bash">git add .                # 添加所有修改到暂存区
+git commit -m "message"  # 提交暂存区内容
+git diff                 # 查看工作区与暂存区差异
+git diff --staged        # 查看暂存区与上次提交差异</code></pre>
+
+      <h4>4. 分支管理</h4>
+      <pre><code class="language-bash">git branch               # 查看本地分支
+git switch -c &lt;new-branch&gt; # 创建并切换分支(Git 2.23+)
+git merge &lt;branch&gt;        # 合并指定分支
+git branch -d &lt;branch&gt;    # 安全删除已合并分支</code></pre>
+
+      <h4>5. 远程协作</h4>
+      <pre><code class="language-bash">git remote -v            # 查看远程仓库
+git push -u origin main  # 首次推送并关联
+git pull                 # 拉取并合并(= fetch + merge)
+git fetch                # 仅获取远程更新
+git branch -a            # 查看所有分支(本地+远程)</code></pre>
+
+      <h4>6. 问题修复</h4>
+      <pre><code class="language-bash"># 撤销工作区修改(未add)
+git checkout -- &lt;file&gt;
+
+# 撤销暂存区修改(已add未commit)
+git reset HEAD &lt;file&gt;
+
+# 撤销最近一次提交(保留修改)
+git reset --soft HEAD~1
+
+# 解决合并冲突
+# 1. 编辑含 &lt;&lt;&lt;&lt;&lt;&lt;&lt; 标记的文件
+# 2. git add &lt;file&gt;
+# 3. git commit</code></pre>
+
+      <h3>四、关键概念解析</h3>
+
+      <h4>🔍 <code>git branch -a</code> 输出详解</h4>
+      <pre><code class="language-text">* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main</code></pre>
+      <ul>
+        <li><strong><code>* main</code></strong>：当前所在的<strong>本地分支</strong>（<code>HEAD</code>指向此处）</li>
+        <li>
+          <strong><code>remotes/origin/HEAD -> origin/main</code></strong>：远程仓库<code>origin</code>的<strong>默认分支指针</strong>（本地记录）
+        </li>
+        <li>
+          <strong><code>remotes/origin/main</code></strong>：<code>origin</code>上<code>main</code>分支的<strong>只读快照</strong>（通过<code>git fetch</code>更新）
+        </li>
+      </ul>
+
+      <h4>🌍 <code>origin</code> 本质解析</h4>
+      <p><strong>是什么：</strong> 远程仓库的<strong>默认别名</strong>（非特定平台，适用于GitHub/GitLab/自建服务器等）</p>
+      <p><strong>怎么来：</strong></p>
+      <pre><code class="language-bash"># 克隆时自动生成
+git clone https://github.com/user/repo.git</code></pre>
+      <pre><code class="language-text"># 查看远程配置
+git remote -v
+# 输出：
+# origin  https://github.com/user/repo.git (fetch)
+# origin  https://github.com/user/repo.git (push)</code></pre>
+      <p><strong>为什么叫 origin：</strong> 表示代码的<strong>起源仓库</strong>（"我最初从哪里克隆而来"）</p>
+
+      <div class="conclusion">
+        <p><strong>终极总结：</strong></p>
+        <blockquote>
+          <p>"Git doesn't enforce good behavior. It just makes it possible."<br>
+            — Linus Torvalds (Git 创始人)</p>
+        </blockquote>
+        <p>Git 提供秩序的可能性，但秩序的实现取决于：</p>
+        <ol>
+          <li>开发者专业素养（单一职责原则）</li>
+          <li>团队规范（Conventional Commits）</li>
+          <li>自动化检查（CI/CD 流程）</li>
+          <li>代码审查（PR/MR 机制）</li>
+        </ol>
+        <p>优秀的开发者不仅会用 Git，更会<strong>用好 Git</strong> —— 让版本历史成为项目的"清晰日记"，而非"混乱草稿"。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 页脚 笔记分类 -->
+  <footer class="footer">
+    <div class="hit-links">
+      <h3>笔记分类</h3>
+      <div class="links-grid">
+        <a href="#" aria-label="好文转载">好文转载</a>
+        <a href="#" aria-label="编程实践">编程实践</a>
+        <a href="#" aria-label="论文阅读">论文阅读</a>
+        <a href="#" aria-label="读书心得">读书心得</a>
+      </div>
+    </div>
+    <p class="hitu-slogan">规格严格，功夫到家</p>
+    <p>© 2026 Charisma | 哈尔滨工业大学</p>
+    <div class="social-links">
+      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
+      <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="发送邮件">✉️</a>
+    </div>
+  </footer>
+
+  <script src="../dynamic.js"></script>
+</body>
+<!-- 语法高亮 -->
+<link href="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+  // 可选：确保语言文件从同一 CDN 加载
+  Prism.plugins.autoloader.languages_path = 'https://fastly.jsdelivr.net/npm/prismjs@1.29.0/components/';
+</script>
+
+</html>

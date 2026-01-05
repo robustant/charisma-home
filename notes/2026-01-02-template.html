@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>笔记标题 | Charisma</title>
+  <title>Charisma | 因果推断入门</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-  <!-- 全局导航（与主页完全一致） -->
+  <!-- 全局导航 -->
   <nav class="main-nav">
     <div class="nav-left">
       <ul class="main-nav-links">
@@ -45,59 +45,53 @@
     </div>
   </nav>
 
-  <!-- 笔记标题、记录时间、类别标签 -->
+  <!-- 标题区 -->
   <header class="hero">
     <div class="container">
-      <h1 class="fade-in">主标题</h1>
-      <p class="subtitle fade-in-delay">副标题</p>
-      <div class="note-meta fade-in-delay" style="margin-top: 1rem;">
-        <span>📅 2026-01-05</span>
-        <span>🏷️ 统计学 · 机器学习 · 公共政策</span>
+      <h1 class="fade-in">因果推断入门</h1>
+      <p class="subtitle fade-in-delay">从相关性到因果性：识别混杂偏倚与估计处理效应</p>
+      <div class="every-note-meta fade-in-delay">
+        <time class="time-label">2026-01-02</time>
+        <span class="article-label">统计学 · 机器学习 · 公共政策</span>
       </div>
     </div>
   </header>
 
   <div class="container">
     <section class="card fade-in">
-      <h2>段落一</h2>
-      <p>...</p>
+      <!-- 笔记内容 -->
     </section>
-
-    <section class="card fade-in">
-      <h2>段落二</h2>
-      <p>...</p>
-    </section>
-
-    <section class="card fade-in">
-      <h2>延伸阅读</h2>
-      <p>...</p>
-    </section>
-
   </div>
 
+  <!-- 页脚 笔记分类 -->
   <footer class="footer">
-
     <div class="hit-links">
       <h3>笔记分类</h3>
       <div class="links-grid">
-        <a href="#" aria-label="统计学笔记">统计学</a>
-        <a href="#" aria-label="前端技术">编程</a>
-        <a href="#" aria-label="公共管理">公共管理</a>
-        <a href="#" aria-label="读书笔记">读书</a>
+        <a href="#" aria-label="好文转载">好文转载</a>
+        <a href="#" aria-label="编程实践">编程实践</a>
+        <a href="#" aria-label="论文阅读">论文阅读</a>
+        <a href="#" aria-label="读书心得">读书心得</a>
       </div>
     </div>
-
     <p class="hitu-slogan">规格严格，功夫到家</p>
-
     <p>© 2026 Charisma | 哈尔滨工业大学</p>
-
     <div class="social-links">
-      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub" rel="noopener">🐙</a>
+      <a href="https://github.com/robustant" target="_blank" aria-label="GitHub">🐙</a>
       <a href="mailto:25s010094@stu.hit.edu.cn" aria-label="发送邮件">✉️</a>
     </div>
   </footer>
 
   <script src="../dynamic.js"></script>
 </body>
+<!-- 语法高亮（国内 CDN） -->
+<link href="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<script src="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+  // 可选：确保语言文件从同一 CDN 加载
+  Prism.plugins.autoloader.languages_path = 'https://fastly.jsdelivr.net/npm/prismjs@1.29.0/components/';
+</script>
 
 </html>
