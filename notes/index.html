@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学习笔记 | Charisma</title>
+  <title>Charisma | 学习笔记</title>
   <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-  <!-- 全局导航（与主页完全一致） -->
+  <!-- 全局导航 -->
   <nav class="main-nav">
     <div class="nav-left">
       <ul class="main-nav-links">
@@ -20,10 +22,12 @@
     <div class="nav-right">
       <button class="theme-toggle" aria-label="切换深色/浅色模式">
         <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.758a.75.75 0 001.06-1.061l-1.59-1.59a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+          <path
+            d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.758a.75.75 0 001.06-1.061l-1.59-1.59a.75.75 0 00-1.061 1.06l1.59 1.591z" />
         </svg>
         <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+          <path
+            d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" />
         </svg>
       </button>
 
@@ -41,15 +45,16 @@
     </div>
   </nav>
 
-  <!-- 英雄区 -->
+  <!-- 标题区 -->
   <header class="hero">
     <div class="container">
       <h1 class="fade-in">学习笔记</h1>
-      <p class="subtitle fade-in-delay">论文阅读 · 技术原理 · 社会科学方法 · 科研思考</p>
+      <p class="subtitle fade-in-delay">论文阅读 · 技术原理 · 社学方法 · 科研思考</p>
     </div>
   </header>
 
   <div class="container">
+    <!-- 最新笔记 -->
     <section class="card fade-in">
       <h2>近期笔记</h2>
       <div class="note-list">
@@ -57,40 +62,51 @@
         <a href="2026-01-02-causal-inference.html" class="note-item">
           <h3 class="note-title">因果推断入门：从相关性到因果性</h3>
           <span class="note-meta">
-            <time datetime="2026-01-02">  2026-01-02  </time>
-            <span>  统计学 · 公共政策  </span>
+            <time datetime="2026-01-02"> 2026-01-02 </time>
           </span>
         </a>
 
         <!-- 第二篇：待更新 -->
-        <a href="#about" class="note-item">
+        <a href="#" class="note-item">
           <h3 class="note-title">等待更新...</h3>
           <span class="note-meta">
-            <time datetime="2026-01-02">  2026-01-02  </time>
-            <span>  类别标签  </span>
+            <time datetime="2026-01-02"> 2026-01-02 </time>
+          </span>
         </a>
       </div>
     </section>
-
+    <!-- 往期笔记 -->
     <section class="card fade-in">
-      <h2>📌 使用说明</h2>
+      <h2>往期笔记</h2>
+      <div class="note-list">
+        <!-- 第一篇：因果推断 -->
+        <a href="2026-01-02-causal-inference.html" class="note-item">
+          <h3 class="note-title">因果推断入门：从相关性到因果性</h3>
+          <span class="note-meta">
+            <time datetime="2025-09-01"> 2026-01-02 </time>
+          </span>
+        </a>
+      </div>
+    </section>
+    <!-- 使用说明 -->
+    <section class="card fade-in">
+      <h2>使用说明</h2>
       <ul>
-        <li>所有笔记均为 HTML 静态页</li>
-        <li>点击标题进入详情页，支持浏览器后退</li>
+        <li>电脑端浏览或手机端横屏阅读体验感更佳</li>
+        <li>笔记有误的地方，欢迎各位邮箱告知，感激不尽</li>
       </ul>
     </section>
 
   </div>
-
+  <!-- 页脚 笔记分类 -->
   <footer class="footer">
     <div class="hit-links">
       <h3>笔记分类</h3>
       <div class="links-grid">
-        <a href="#" aria-label="统计学笔记">统计学</a>
-        <a href="#" aria-label="前端技术">编程</a>
-        <a href="#" aria-label="公共管理">公共管理</a>
-        <a href="#" aria-label="工具链">工具链</a>
-        <a href="#" aria-label="读书笔记">读书</a>
+        <a href="#" aria-label="好文转载">好文转载</a>
+        <a href="#" aria-label="编程实践">编程实践</a>
+        <a href="#" aria-label="论文阅读">论文阅读</a>
+        <a href="#" aria-label="读书心得">读书心得</a>
       </div>
     </div>
     <p class="hitu-slogan">规格严格，功夫到家</p>
@@ -103,4 +119,5 @@
 
   <script src="../dynamic.js"></script>
 </body>
+
 </html>
