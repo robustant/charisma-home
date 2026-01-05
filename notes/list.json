@@ -1,4 +1,5 @@
 [
   {"file": "2026-01-02-template.html", "title": "template", "date": "2026-01-02"},
-  {"file": "2026-01-02-causal-inference.html", "title": "因果推断", "date": "2026-01-02"}
+  {"file": "2026-01-02-causal-inference.html", "title": "因果推断", "date": "2026-01-02"},
+  {"file": "2026-01-06-introduce-git.html", "title": "Git 入门", "date": "2026-01-06"}
 ]
