@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C语言圣诞树 - 0 Error 0 Warning</title>
+    <style>
+      :root {
+        --bg-color: #0d1117;
+        --term-green: #3fb950;
+        --keyword-color: #ff7b72;
+        --type-color: #79c0ff;
+        --string-color: #a5d6ff;
+        --comment-color: #8b949e;
+        --error-red: #ff0000;
+        --gold: #ffd700;
+        --null-color: #ff4444;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: #c9d1d9;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        user-select: none;
+      }
+
+      /* 顶部导航栏模拟 IDE */
+      .ide-header {
+        width: 100%;
+        background: #161b22;
+        border-bottom: 1px solid #30363d;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+      }
+
+      .filename {
+        font-size: 14px;
+        color: var(--comment-color);
+      }
+
+      .controls button {
+        background: #238636;
+        border: 1px solid rgba(240, 246, 252, 0.1);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 12px;
+        margin-left: 10px;
+        transition: all 0.2s;
+      }
+
+      .controls button:hover {
+        background: #2ea043;
+      }
+
+      .controls button.danger {
+        background: #da3633;
+      }
+      .controls button.danger:hover {
+        background: #f85149;
+      }
+
+      .main-stage {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+      }
+
+      /* 圣诞树容器 */
+      .code-tree {
+        text-align: center;
+        line-height: 1.2;
+        font-size: 14px;
+        /* white-space: pre; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.5s ease;
+        position: relative;
+        z-index: 2;
+      }
+
+      .tree-layer {
+        display: block;
+        margin: 0 auto;
+        white-space: pre;
+        transition: color 0.3s, transform 0.3s, opacity 0.3s;
+        will-change: transform, opacity;
+      }
+
+      .star {
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: 0 0 15px var(--gold);
+        animation: pulse 2s infinite;
+        display: block;
+        margin-bottom: 5px;
+        cursor: help;
+        transition: color 0.2s;
+      }
+
+      .star.is-null {
+        color: var(--error-red);
+        text-shadow: 0 0 10px var(--error-red);
+        font-family: "Courier New", monospace;
+      }
+
+      .kw {
+        color: var(--keyword-color);
+      } /* keyword */
+      .tp {
+        color: var(--type-color);
+      } /* type */
+      .str {
+        color: var(--string-color);
+      } /* string */
+      .cm {
+        color: var(--comment-color);
+      } /* comment */
+      .op {
+        color: #d2a8ff;
+      } /* operator */
+      .fn {
+        color: #d2a8ff;
+      } /* function */
+      .nl {
+        color: var(--null-color);
+        font-weight: bold;
+      } /* NULL Special */
+
+      .light-up .kw,
+      .light-up .tp,
+      .light-up .str {
+        text-shadow: 0 0 8px currentColor;
+      }
+
+      .light-up .nl {
+        animation: null-blink 1s infinite alternate;
+      }
+
+      /* 终端区域 */
+      .terminal {
+        width: 100%;
+        height: 150px;
+        background: #000;
+        border-top: 1px solid #30363d;
+        padding: 10px;
+        font-size: 12px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        z-index: 10;
+      }
+
+      .terminal-line {
+        margin: 2px 0;
+        opacity: 0.8;
+      }
+      .terminal-line.error {
+        color: var(--error-red);
+      }
+      .terminal-line.success {
+        color: var(--term-green);
+      }
+      .terminal-line.warn {
+        color: var(--gold);
+      }
+
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: var(--term-green);
+        animation: blink 1s step-end infinite;
+        vertical-align: middle;
+      }
+
+      .snow-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .snowflake {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 12px;
+        animation: fall linear infinite;
+      }
+
+      .snowflake.null-flake {
+        color: rgba(255, 100, 100, 0.4);
+        font-weight: bold;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 1;
+          text-shadow: 0 0 20px var(--gold);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes null-blink {
+        0% {
+          opacity: 0.5;
+          text-shadow: none;
+        }
+        100% {
+          opacity: 1;
+          text-shadow: 0 0 10px var(--error-red);
+        }
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+
+      @keyframes glitch {
+        0% {
+          opacity: 1;
+          filter: none;
+        }
+        50% {
+          opacity: 0.8;
+          filter: hue-rotate(90deg) blur(1px);
+        }
+        100% {
+          opacity: 1;
+          filter: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .code-tree {
+          font-size: 10px;
+        }
+        .ide-header h1 {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ide-header">
+      <div class="filename">🎄 christmas_tree.c [Read-Only]</div>
+      <div class="controls">
+        <button onclick="compileTree()">gcc -o tree tree.c</button>
+        <button onclick="runTree()">./tree</button>
+        <button class="danger" onclick="segFault()">free(tree)</button>
+      </div>
+    </div>
+
+    <div class="main-stage">
+      <div class="snow-container" id="snowContainer"></div>
+
+      <div class="code-tree" id="codeTree">
+        <!-- 树顶 -->
+        <div
+          class="star"
+          id="treeStar"
+          onmouseover="hoverStar()"
+          onmouseout="leaveStar()"
+          onclick="clickStar()"
+        >
+          *ptr
+        </div>
+
+        <!-- 树的内容 -->
+      </div>
+    </div>
+
+    <div class="terminal" id="terminal">
+      <div class="terminal-line">gcc version 12.2.0 (Debian 12.2.0-14)</div>
+      <div class="terminal-line">
+        > waiting for command...<span class="cursor"></span>
+      </div>
+    </div>
+
+    <script>
+      const keywords = [
+        "int",
+        "char",
+        "void",
+        "float",
+        "double",
+        "struct",
+        "if",
+        "else",
+        "for",
+        "while",
+        "return",
+        "break",
+        "malloc",
+        "free",
+        "printf",
+        "NULL",
+        "true",
+        "{",
+        "}",
+        ";",
+        "&&",
+        "->",
+        "&",
+        "*",
+      ];
+
+      const nullPhrases = [
+        "if(ptr==NULL)",
+        "return NULL;",
+        "void* p=0;",
+        "while(!ptr)",
+        "assert(ptr);",
+        "ptr=NULL;",
+      ];
+
+      // 构建圣诞树
+      function buildTree() {
+        const treeContainer = document.getElementById("codeTree");
+        while (treeContainer.children.length > 1) {
+          treeContainer.removeChild(treeContainer.lastChild);
+        }
+
+        const levels = 28; // 树的高度
+
+        for (let i = 0; i < levels; i++) {
+          const layer = document.createElement("div");
+          layer.className = "tree-layer";
+
+          let lineContent = "";
+          if (Math.random() < 0.05) {
+            lineContent =
+              nullPhrases[Math.floor(Math.random() * nullPhrases.length)];
+            // 补全长度
+            let padding = generateCodeLine(Math.max(0, i * 0.6 - 2));
+            if (Math.random() > 0.5) lineContent = lineContent + " " + padding;
+            else lineContent = padding + " " + lineContent;
+          } else {
+            lineContent = generateCodeLine(i * 0.6);
+          }
+
+          layer.innerHTML = highlightSyntax(lineContent);
+          treeContainer.appendChild(layer);
+        }
+
+        // 树干
+        const trunk = document.createElement("div");
+        trunk.className = "tree-layer";
+        trunk.style.marginTop = "5px";
+        trunk.innerHTML = highlightSyntax("return 0;");
+        treeContainer.appendChild(trunk);
+
+        const trunk2 = document.createElement("div");
+        trunk2.className = "tree-layer";
+        trunk2.innerHTML = highlightSyntax("}");
+        treeContainer.appendChild(trunk2);
+      }
+
+      // 生成随机代码行
+      function generateCodeLine(length) {
+        let line = "";
+        let remaining = length;
+
+        while (remaining > 0) {
+          const token = keywords[Math.floor(Math.random() * keywords.length)];
+          line += token + " ";
+          remaining--;
+        }
+        return line.trim();
+      }
+
+      // 语法高亮
+      function highlightSyntax(text) {
+        return text
+          .split(" ")
+          .map((token) => {
+            if (token === "NULL" || token.includes("NULL"))
+              return `<span class="nl">${token}</span>`;
+
+            if (
+              ["int", "char", "void", "float", "double", "struct"].includes(
+                token
+              )
+            )
+              return `<span class="tp">${token}</span>`;
+            if (
+              [
+                "if",
+                "else",
+                "for",
+                "while",
+                "return",
+                "sizeof",
+                "malloc",
+                "free",
+              ].includes(token)
+            )
+              return `<span class="kw">${token}</span>`;
+            if (["printf", "scanf"].includes(token))
+              return `<span class="fn">${token}</span>`;
+            if (
+              token.includes("*") ||
+              token.includes("&") ||
+              token.includes("->")
+            )
+              return `<span class="op">${token}</span>`;
+            if (token === "{" || token === "}")
+              return `<span class="op">${token}</span>`;
+            return `<span class="str">${token}</span>`;
+          })
+          .join(" ");
+      }
+
+      // 终端输出
+      function log(message, type = "") {
+        const term = document.getElementById("terminal");
+        const line = document.createElement("div");
+        line.className = `terminal-line ${type}`;
+        line.innerText = `> ${message}`;
+        term.insertBefore(line, term.lastElementChild);
+        term.scrollTop = term.scrollHeight;
+      }
+
+      function createSnow() {
+        const container = document.getElementById("snowContainer");
+        const symbols = [";", "{", "}", "*", "&", "//", "0x00"];
+        const nullSymbols = ["NULL", "(void*)0", "\\0", "0x0"];
+
+        setInterval(() => {
+          const flake = document.createElement("div");
+          const isNull = Math.random() < 0.1; // 空指针雪花概率
+
+          if (isNull) {
+            flake.className = "snowflake null-flake";
+            flake.innerText =
+              nullSymbols[Math.floor(Math.random() * nullSymbols.length)];
+            flake.style.fontSize = "10px";
+          } else {
+            flake.className = "snowflake";
+            flake.innerText =
+              symbols[Math.floor(Math.random() * symbols.length)];
+          }
+
+          flake.style.left = Math.random() * 100 + "vw";
+          flake.style.animationDuration = Math.random() * 5 + 3 + "s";
+          flake.style.opacity = Math.random();
+
+          container.appendChild(flake);
+
+          setTimeout(() => {
+            flake.remove();
+          }, 8000);
+        }, 200);
+      }
+
+      function hoverStar() {
+        const star = document.getElementById("treeStar");
+        if (star.innerText !== "NULL") {
+          star.dataset.original = star.innerText;
+          star.innerText = "NULL";
+          star.classList.add("is-null");
+        }
+      }
+
+      function leaveStar() {
+        const star = document.getElementById("treeStar");
+        star.innerText = "*ptr";
+        star.classList.remove("is-null");
+      }
+
+      function clickStar() {
+        log("RUNTIME ERROR: Dereferencing NULL pointer at tree_top!", "error");
+
+        const tree = document.getElementById("codeTree");
+        tree.style.animation =
+          "glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite";
+        setTimeout(() => {
+          tree.style.animation = "";
+        }, 400);
+      }
+      // ------------------
+
+      function compileTree() {
+        log("gcc -o christmas_tree tree.c -Wall");
+        setTimeout(() => {
+          log("Compiling...", "warn");
+        }, 500);
+
+        setTimeout(() => {
+          const tree = document.getElementById("codeTree");
+
+          tree.style.filter = "none";
+          tree.style.opacity = "1";
+          document.body.style.animation = "";
+          const layers = Array.from(tree.children);
+          layers.forEach((layer) => {
+            layer.style.transition = "";
+            layer.style.transform = "";
+            layer.style.opacity = "";
+          });
+
+          if (tree.style.display === "none") {
+            tree.style.display = "block";
+          }
+          tree.classList.add("light-up");
+
+          log("Build finished successfully.", "success");
+          log("0 Errors, 0 Warnings. (Code review skipped)", "success");
+        }, 1500);
+      }
+
+      function runTree() {
+        const tree = document.getElementById("codeTree");
+        if (!tree.classList.contains("light-up")) {
+          log("Error: Please compile first!", "error");
+          return;
+        }
+
+        log("./christmas_tree");
+
+        const events = [
+          { msg: "Merry Christmas! 程序正常退出，返回码: 0", type: "success" },
+          { msg: "Error: 圣诞老人指针为NULL", type: "error" },
+          {
+            msg: "Warning: 无限循环 - while(圣诞节) { 快乐++; }",
+            type: "warn",
+          },
+          { msg: "Warning: 内存泄漏 - 圣诞礼物分配后未释放", type: "warn" },
+          { msg: "Error: 栈溢出 - 圣诞袜中的礼物太多", type: "error" },
+          { msg: "Warning: 函数'santa_claus'的隐式声明", type: "warn" },
+          { msg: "Error: 尝试将礼物分给0个小朋友", type: "error" },
+          { msg: "Error: 圣诞树装饰品索引超出范围", type: "error" },
+          { msg: "Warning: 雪人不能被赋值给圣诞树变量", type: "warn" },
+          { msg: "Error: '圣诞节快乐'未定义", type: "error" },
+          { msg: "Warning: 圣诞老人和驯鹿在烟囱处互相等待", type: "warn" },
+          { msg: "Error: 计算圣诞布丁配方时出现NaN", type: "error" },
+          { msg: "Error: 重复释放圣诞快乐内存", type: "error" },
+        ];
+
+        const randomEvent = events[Math.floor(Math.random() * events.length)];
+
+        setTimeout(() => {
+          log(randomEvent.msg, randomEvent.type);
+          if (
+            randomEvent.msg.includes("Segmentation") ||
+            randomEvent.msg.includes("崩溃")
+          ) {
+            tree.style.animation =
+              "glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite";
+            setTimeout(() => {
+              tree.style.animation = "";
+            }, 600);
+          }
+        }, 800);
+      }
+
+      function segFault() {
+        log("free(tree_ptr);");
+        log("tree_ptr = NULL; // Good practice", "warn");
+        log("Attempting to free memory...", "warn");
+
+        const tree = document.getElementById("codeTree");
+        const layers = Array.from(tree.children);
+
+        document.body.style.animation =
+          "shake 0.5s cubic-bezier(.36,.07,.19,.97) both";
+        tree.style.filter = "hue-rotate(90deg) contrast(150%) blur(0.5px)";
+
+        setTimeout(() => {
+          layers.forEach((layer) => {
+            const randomX = (Math.random() - 0.5) * 800;
+            const randomRotate = (Math.random() - 0.5) * 720;
+            const randomDrop = 500 + Math.random() * 500;
+            const duration = 0.8 + Math.random() * 1.5;
+            const delay = Math.random() * 0.3;
+
+            layer.style.transition = `all ${duration}s ease-in ${delay}s`;
+            layer.style.transform = `translate(${randomX}px, ${randomDrop}px) rotate(${randomRotate}deg)`;
+            layer.style.opacity = "0";
+          });
+
+          log("Segmentation fault (core dumped)", "error");
+          log("System halted. Christmas is cancelled.", "error");
+        }, 400);
+
+        setTimeout(() => {
+          document.body.style.animation = "";
+        }, 500);
+      }
+
+      // 初始化
+      window.onload = () => {
+        buildTree();
+        createSnow();
+        setTimeout(() => log("Initialize merry_christmas.h ..."), 500);
+      };
+    </script>
+  </body>
+</html>
