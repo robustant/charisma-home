@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Romy</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #main {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #video1 {
+            width: 100%;
+            height: 100%;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <video id="video1" muted="muted" autoplay="autoplay" loop="loop"
+            src="./content.mp4">
+        </video>
+    </div>
+</body>
+
+<script type="text/javascript">
+    // 页面加载完成后自动播放视频
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.getElementById("video1");
+        if (video) {
+            // 确保视频可以播放
+            video.play().catch(function(error) {
+                console.log("视频播放失败:", error);
+                // 如果自动播放被阻止，显示播放按钮
+                var playButton = document.createElement('button');
+                playButton.textContent = '点击播放视频';
+                playButton.style.position = 'absolute';
+                playButton.style.top = '50%';
+                playButton.style.left = '50%';
+                playButton.style.transform = 'translate(-50%, -50%)';
+                playButton.style.padding = '15px 30px';
+                playButton.style.fontSize = '18px';
+                playButton.style.zIndex = '1000';
+                playButton.onclick = function() {
+                    video.play();
+                    playButton.style.display = 'none';
+                };
+                document.body.appendChild(playButton);
+            });
+        }
+    });
+</script>
+</html>
