@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网址聚合</title>
+    <link rel="stylesheet" href="url-navigate-style.css">
+</head>
+
+<body>
+    <!-- 全局导航 -->
+    <nav class="main-nav">
+        <div class="nav-left">
+            <ul class="main-nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="self-introduction.html">自我介绍</a></li>
+                <li><a href="notes/">笔记</a></li>
+                <li><a href="fun-things-collection.html">趣物收集</a></li>
+                <li><a href="#">网址聚合</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <button class="theme-toggle" aria-label="切换深色/浅色模式">
+                <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.758a.75.75 0 001.06-1.061l-1.59-1.59a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" />
+                </svg>
+            </button>
+
+            <button class="hamburger" aria-label="切换导航菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu">
+            <a href="index.html">主页</a>
+            <a href="self-introduction.html">自我介绍</a>
+            <a href="notes/">笔记</a>
+            <a href="fun-things-collection.html">趣物收集</a>
+            <a href="#">网址聚合</a>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <div class="hero">
+        <h1>🌐 共享网址聚合社</h1>
+        <p class="subtitle">一键直达 | 共享 | 聚合</p>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="container">
+        <div class="search-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="搜索（字符匹配）...">
+        </div>
+    </div>
+
+    <!-- 网址分类区域 -->
+    <div class="container">
+        <!-- AI赋能板块 -->
+        <div class="category">
+            <h2 class="category-title">🤖 AI 赋能</h2>
+            <div class="links-container" id="ai-tools">
+                <a href="https://chat.openai.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">ChatGPT</div>
+                    <div class="link-desc">OpenAI官方聊天机器人</div>
+                </a>
+                <a href="https://www.anthropic.com/claude" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Claude</div>
+                    <div class="link-desc">Anthropic高级AI助手</div>
+                </a>
+                <a href="https://qwen.aliyun.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">通义千问</div>
+                    <div class="link-desc">阿里云超大规模语言模型</div>
+                </a>
+                <a href="https://yiyan.baidu.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">文心一言</div>
+                    <div class="link-desc">百度智能对话机器人</div>
+                </a>
+                <a href="https://www.moonshot.cn" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">月之暗面</div>
+                    <div class="link-desc">Kimi大模型提供商</div>
+                </a>
+                <a href="https://www.midjourney.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Midjourney</div>
+                    <div class="link-desc">AI图像生成艺术平台</div>
+                </a>
+                <a href="https://aiyouthlab.com/" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国内</span>
+                    <div class="link-name">Vinsoo</div>
+                    <div class="link-desc">突破技术门槛，助力每一个创意落地</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 开发工具 -->
+        <div class="category">
+            <h2 class="category-title">💻 开发工具</h2>
+            <div class="links-container" id="dev-tools">
+                <a href="https://github.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">GitHub</div>
+                    <div class="link-desc">代码托管平台</div>
+                </a>
+                <a href="https://stackoverflow.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Stack Overflow</div>
+                    <div class="link-desc">程序员问答社区</div>
+                </a>
+                <a href="https://developer.mozilla.org" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">MDN Web Docs</div>
+                    <div class="link-desc">Web开发文档</div>
+                </a>
+                <a href="https://codepen.io" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">CodePen</div>
+                    <div class="link-desc">前端在线编辑器</div>
+                </a>
+                <a href="https://gitlab.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">GitLab</div>
+                    <div class="link-desc">DevOps平台</div>
+                </a>
+                <a href="https://bitbucket.org" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Bitbucket</div>
+                    <div class="link-desc">代码仓库托管</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 学习资源 -->
+        <div class="category">
+            <h2 class="category-title">🎓 学习资源</h2>
+            <div class="links-container" id="learning">
+                <a href="https://www.coursera.org" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Coursera</div>
+                    <div class="link-desc">在线课程平台</div>
+                </a>
+                <a href="https://www.w3schools.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">W3Schools</div>
+                    <div class="link-desc">Web技术教程</div>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">YouTube</div>
+                    <div class="link-desc">视频学习平台</div>
+                </a>
+                <a href="https://www.khanacademy.org" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Khan Academy</div>
+                    <div class="link-desc">免费教育平台</div>
+                </a>
+                <a href="https://www.udemy.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Udemy</div>
+                    <div class="link-desc">在线技能学习</div>
+                </a>
+                <a href="https://www.edx.org" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">edX</div>
+                    <div class="link-desc">大学课程平台</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 社交媒体 -->
+        <div class="category">
+            <h2 class="category-title">👥 社交媒体</h2>
+            <div class="links-container" id="social">
+                <a href="https://www.weibo.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">微博</div>
+                    <div class="link-desc">中文社交媒体</div>
+                </a>
+                <a href="https://www.zhihu.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">知乎</div>
+                    <div class="link-desc">知识问答社区</div>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">LinkedIn</div>
+                    <div class="link-desc">职业社交平台</div>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Twitter</div>
+                    <div class="link-desc">国际社交平台</div>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Facebook</div>
+                    <div class="link-desc">全球社交网络</div>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="link-card">
+                    <span class="country-tag foreign">国外</span>
+                    <div class="link-name">Instagram</div>
+                    <div class="link-desc">照片分享社区</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 生活娱乐 -->
+        <div class="category">
+            <h2 class="category-title">🎬 生活娱乐</h2>
+            <div class="links-container" id="entertainment">
+                <a href="https://www.bilibili.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">B站</div>
+                    <div class="link-desc">视频分享网站</div>
+                </a>
+                <a href="https://music.163.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">网易云音乐</div>
+                    <div class="link-desc">在线音乐平台</div>
+                </a>
+                <a href="https://www.douban.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">豆瓣</div>
+                    <div class="link-desc">文艺生活社区</div>
+                </a>
+                <a href="https://www.taobao.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">淘宝</div>
+                    <div class="link-desc">在线购物平台</div>
+                </a>
+                <a href="https://www.jd.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">京东</div>
+                    <div class="link-desc">综合购物平台</div>
+                </a>
+                <a href="https://www.meituan.com" target="_blank" class="link-card">
+                    <span class="country-tag domestic">国内</span>
+                    <div class="link-name">美团</div>
+                    <div class="link-desc">生活服务平台</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="url-navigate.js"></script>
+    <script src="dynamic.js"></script>
+</body>
+
+</html>
