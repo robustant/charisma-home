@@ -2,8 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========== 1. 初始化主题 ==========
   const themeToggle = document.querySelector('.theme-toggle');
   const htmlEl = document.documentElement;
-  const savedTheme = localStorage.getItem('theme') || 'light';
+  // 优先用户手动设置，其次跟随系统偏好，最后默认 light
+  const savedTheme = localStorage.getItem('theme')
+    || (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   htmlEl.setAttribute('data-theme', savedTheme);
+
+  // 跟随系统主题变化（仅在用户未手动设置时生效）
+  window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+      htmlEl.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
